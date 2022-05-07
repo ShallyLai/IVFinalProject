@@ -307,7 +307,7 @@
 "Universidad Austral",2017,36.2,"Argentina","Latin America","Private",7.5,0.21875,0.010757190247673,0.0326424105164689
 "National Yang Ming University",2017,34.4,"Taiwan","Asia","Public",10,0.125,0.00763309607394763,0.047511200827138
 "National Taiwan Normal University",2017,36,"Taiwan","Asia","Public",10,0.25,0.048278527488808,0.0676480724730442
-"Pontificia Universidad Católica Argentina",2017,36,"Argentina","Latin America","Private",0,0.125,0.0342362072852588,0.18733691103343
+"Pontificia Universidad Católica Argentina",2017,36,"Argentina","Latin America","Private",5,0.125,0.0342362072852588,0.18733691103343
 "Rensselaer Polytechnic Institute",2017,36,"United States","North America","Private",10,0.375,0.0513382073496731,0.0314607847964157
 "Indian Institute of Technology Kharagpur (IIT-KGP)",2017,35.9,"India","Asia","Public",10,0.46875,0.000869593223614287,0.037910491851706
 "City, University of London",2017,35.8,"United Kingdom","Europe","Public",10,0.5,0.237109085638829,0.0477573728521491
@@ -349,7 +349,7 @@
 "Moscow Institute of Physics and Technology (MIPT / Moscow Phystech)",2017,33.4,"Russia","Europe","Public",10,0.15625,0.0371348513639731,0.0546501895524593
 "MGIMO University",2017,31,"Russia","Europe","Public",10,0.125,0.0488582563045509,0.0856186302988528
 "Universität Konstanz",2017,33.2,"Germany","Europe","Public",10,0.34375,0.0399046668169667,0.051154546797302
-"Universidad de Belgrano",2017,33.2,"Argentina","Latin America","Private",0,0.1875,0.0244130245740604,0.0398798680517946
+"Universidad de Belgrano",2017,33.2,"Argentina","Latin America","Private",5,0.1875,0.0244130245740604,0.0398798680517946
 "Belarusian State University",2017,33,"Belarus","Europe","Public",10,0.15625,0.137331315018197,0.205455172074245
 "Deakin University",2017,32.9,"Australia","Oceania","Public",10,0.71875,0.344101259299816,0.091132883659101
 "Université Paris-Dauphine, Université PSL",2017,33.4,"France","Europe","Public",7.5,0.375,0.0656703919610938,0.0343163802865442
@@ -729,7 +729,7 @@
 "Belarusian State University",2018,35.1,"Belarus","Europe","Public",10,0.15625,0.137331315018197,0.205455172074245
 "Mahidol University",2018,35.1,"Thailand","Asia","Public",10,0.21875,0.0455731263486747,0.18955245925853
 "L.N. Gumilyov Eurasian National University (ENU)",2018,35,"Kazakhstan","Asia","Public",10,0.15625,0.034687107475281,0.164935256757422
-"Universidad de Belgrano",2018,34.9,"Argentina","Latin America","Private",0,0.1875,0.0244130245740604,0.0398798680517946
+"Universidad de Belgrano",2018,34.9,"Argentina","Latin America","Private",5,0.1875,0.0244130245740604,0.0398798680517946
 "Umea University",2018,34.8,"Sweden","Europe","Public",10,0.21875,0.0381976875261683,0.0967948402343558
 "Gwangju Institute of Science and Technology (GIST)",2018,34.7,"South Korea","Asia","Public",10,0.3125,0.00392927308447937,0.0088621929003988
 "Boston College",2018,34.7,"United States","North America","Private",10,0.40625,0.0473767271087636,0.0515976564423219
@@ -758,7 +758,7 @@
 "Stellenbosch University",2018,33.1,"South Africa","Africa","Public",10,0.78125,0.057199909819962,0.0459849342720693
 "University of Witwatersrand",2018,33,"South Africa","Africa","Public",10,0.46875,0.0607104898708493,0.0800551425336025
 "Rensselaer Polytechnic Institute",2018,33,"United States","North America","Private",10,0.375,0.0513382073496731,0.0314607847964157
-"Pontificia Universidad Católica Argentina",2018,33,"Argentina","Latin America","Private",0,0.125,0.0342362072852588,0.18733691103343
+"Pontificia Universidad Católica Argentina",2018,33,"Argentina","Latin America","Private",5,0.125,0.0342362072852588,0.18733691103343
 "Tokyo Medical and Dental University (TMDU)",2018,32.9,"Japan","Asia","Public",10,0.09375,0.0104673258398016,0.0457879966520605
 "University of Tromsø The Arctic University of Norway",2018,32.9,"Norway","Europe","Public",7.5,0.21875,0.0365229153918001,0.103736891339668
 "James Cook University",2018,32.9,"Australia","Oceania","Public",10,0.34375,0.0376501658668556,0.144749150706514
@@ -1158,7 +1158,7 @@
 "Universidad Austral",2019,29.9,"Argentina","Latin America","Private",7.5,0.2,0.010757190247673,0.0326424105164689
 "University of Kansas",2019,29.9,"United States","North America","Public",10,0.2,0.0648652130503398,0.165279897592438
 "James Cook University",2019,29.7,"Australia","Oceania","Public",10,0.314285714285714,0.0376501658668556,0.144749150706514
-"Pontificia Universidad Católica Argentina",2019,29.7,"Argentina","Latin America","Private",0,0.114285714285714,0.0342362072852588,0.18733691103343
+"Pontificia Universidad Católica Argentina",2019,29.7,"Argentina","Latin America","Private",5,0.114285714285714,0.0342362072852588,0.18733691103343
 "University of Tromsø The Arctic University of Norway",2019,29.7,"Norway","Europe","Public",7.5,0.2,0.0365229153918001,0.103736891339668
 "Ruhr-Universität Bochum",2019,29.6,"Germany","Europe","Public",10,1,0.211407774807562,0.0606567869627296
 "National Research Tomsk Polytechnic University",2019,29.4,"Russia","Europe","Public",10,0.171428571428571,0.0887951302779478,0.0763133277534341
@@ -1172,7 +1172,7 @@
 "Aston University",2019,29,"United Kingdom","Europe","Public",10,0.457142857142857,0.0553641019034429,0.0359411156516174
 "Indian Institute of Technology Roorkee (IITR)",2019,29,"India","Asia","Public",10,0.485714285714286,0.00650584559889207,0.0245679680961056
 "University of Witwatersrand",2019,29,"South Africa","Africa","Public",10,0.428571428571429,0.0607104898708493,0.0800551425336025
-"Universidad de Belgrano",2019,28.8,"Argentina","Latin America","Private",0,0.171428571428571,0.0244130245740604,0.0398798680517946
+"Universidad de Belgrano",2019,28.8,"Argentina","Latin America","Private",5,0.171428571428571,0.0244130245740604,0.0398798680517946
 "University of California, Riverside",2019,28.8,"United States","North America","Public",10,0.485714285714286,0.065509356178943,0.0737039042883167
 "University of the Philippines",2019,28.8,"Philippines","Asia","Public",7.5,0.257142857142857,0.00940448967760636,0.220570134409926
 "HUFS - Hankuk (Korea) University of Foreign Studies ",2019,28.7,"South Korea","Asia","Private",7.5,0.2,0.0944635898096557,0.115848554970213
@@ -1196,7 +1196,7 @@
 "Universidade Nova de Lisboa",2019,27.9,"Portugal","Europe","Public",10,0.342857142857143,0.142581081516313,0.0846831766038107
 "Ben-Gurion University of The Negev",2019,27.7,"Israel","Asia","Public",10,0.428571428571429,0.0565235595349287,0.0521884693023485
 "Johannes Gutenberg Universität Mainz",2019,27.7,"Germany","Europe","Public",10,0.257142857142857,0.116106798930722,0.170991088572695
-"Universidad Externado de Colombia ",2019,27.7,"Colombia","Latin America","Private",0,0.342857142857143,0.00457341621308255,0.0501698586972576
+"Universidad Externado de Colombia ",2019,27.7,"Colombia","Latin America","Private",5,0.342857142857143,0.00457341621308255,0.0501698586972576
 "University of Coimbra",2019,27.7,"Portugal","Europe","Public",10,0.371428571428571,0.144191439337821,0.085667864703855
 "Jagiellonian University",2019,27.6,"Poland","Europe","Public",10,0.228571428571429,0.0936262037424716,0.201319482054059
 "Tulane University",2019,27.5,"United States","North America","Private",10,0.171428571428571,0.0377467873361461,0.0853232238688395
@@ -1208,7 +1208,7 @@
 "University of Stirling",2019,27.3,"United Kingdom","Europe","Public",10,0.4,0.082546941930497,0.0358426468416129
 "The University of Tennessee, Knoxville",2019,27.2,"United States","North America","Public",7.5,0.485714285714286,0.0372314728332636,0.0836984885037664
 "The American University in Cairo",2019,27.1,"Egypt","Africa","Private",7.5,0.285714285714286,0.00686012431962382,0.0284574860912806
-"Universidad de Palermo (UP)",2019,27.1,"Argentina","Latin America","Private",0,0.171428571428571,0.0659924635253953,0.0410122593668455
+"Universidad de Palermo (UP)",2019,27.1,"Argentina","Latin America","Private",5,0.171428571428571,0.0659924635253953,0.0410122593668455
 "Dublin City University",2019,27,"Ireland","Europe","Public",7.5,0.314285714285714,0.0455731263486747,0.0618876470877849
 "Shanghai University",2019,27,"China (Mainland)","Asia","Public",10,0.257142857142857,0.0706947083641985,0.204618187189208
 "University of Pisa",2019,27,"Italy","Europe","Public",10,0.514285714285714,0.0485361847402493,0.0884249913839791
@@ -1266,8 +1266,8 @@
 "Xiamen University",2019,24.7,"China (Mainland)","Asia","Public",10,0.342857142857143,0.0464749267287191,0.152922061936881
 "Flinders University",2019,24.6,"Australia","Oceania","Public",10,0.514285714285714,0.19263100260878,0.0458864654620649
 "Institut National des Sciences Appliquées de Lyon (INSA)",2019,24.6,"France","Europe","Public",10,0.285714285714286,0.057811845792135,0.0307715031263847
-"Auezov South Kazakhstan University (SKU)",2019,24.5,"Kazakhstan","Asia","Public",0,0.171428571428571,0.0714998872749525,0.14287824331643
-"Abai Kazakh National Pedagogical University",2019,24.4,"Kazakhstan","Asia","Public",0,0.2,0.0107249830912429,0.0981734035744178
+"Auezov South Kazakhstan University (SKU)",2019,24.5,"Kazakhstan","Asia","Public",5,0.171428571428571,0.0714998872749525,0.14287824331643
+"Abai Kazakh National Pedagogical University",2019,24.4,"Kazakhstan","Asia","Public",5,0.2,0.0107249830912429,0.0981734035744178
 "UCSI University",2019,24.4,"Malaysia","Asia","Private",7.5,0.228571428571429,0.0514348288189636,0.0366303973216484
 "Universidad de Alcalá",2019,24.4,"Spain","Europe","Public",7.5,0.2,0.146864633321524,0.132637487075969
 "University of Eastern Finland",2019,24.4,"Finland","Europe","Public",10,0.285714285714286,0.0215465876517762,0.0594259268376742
@@ -1287,7 +1287,7 @@
 " Western Sydney University",2019,23.6,"Australia","Oceania","Public",7.5,0.628571428571429,0.229411575252021,0.0797597361035892
 "Singapore Management University",2019,23.5,"Singapore","Asia","Public",10,0.4,0.0657025991175239,0.0290482989513072
 "Technische Universität Braunschweig",2019,23.5,"Germany","Europe","Public",10,0.228571428571429,0.094721247061097,0.118064103195313
-"Saint Joseph University of Beirut (USJ) ",2019,23.5,"Lebanon","Asia","Private",0,0.257142857142857,0.0307578343908016,0.0463295751070848
+"Saint Joseph University of Beirut (USJ) ",2019,23.5,"Lebanon","Asia","Private",5,0.257142857142857,0.0307578343908016,0.0463295751070848
 "University of Science and Technology Beijing",2019,23.5,"China (Mainland)","Asia","Public",10,0.428571428571429,0.0263454539598699,0.079021220028556
 "Pontificia Universidad Católica del Perú",2019,26.4,"Peru","Latin America","Private",7.5,0.314285714285714,0.00940448967760636,0.116636305450249
 "Massachusetts Institute of Technology (MIT) ",2020,100,"United States","North America","Private",10,0.114285714285714,0.120132693484492,0.150903451331791
@@ -1627,7 +1627,7 @@
 "University Ulm",2020,31.4,"Germany","Europe","Public",10,0.2,0.0415150246384747,0.0725222785682635
 "University at Buffalo SUNY",2020,31.8,"United States","North America","Public",10,0.542857142857143,0.14200135270057,0.0753286396533898
 "Northeastern University",2020,31.7,"United States","North America","Private",10,0.342857142857143,0.244613353087056,0.0848308798188174
-"Pontificia Universidad Católica Argentina",2020,31.7,"Argentina","Latin America","Private",0,0.114285714285714,0.0342362072852588,0.18733691103343
+"Pontificia Universidad Católica Argentina",2020,31.7,"Argentina","Latin America","Private",5,0.114285714285714,0.0342362072852588,0.18733691103343
 "University of Jyväskylä",2020,31.6,"Finland","Europe","Public",10,0.2,0.0109182260298238,0.0774457190684851
 "Westfälische Wilhelms-Universität Münster ",2020,31.3,"Germany","Europe","Public",10,0.285714285714286,0.0916293600438017,0.208261533159372
 "Politecnico di Torino",2020,31.2,"Italy","Europe","Public",10,0.828571428571429,0.172920222873522,0.0516961252523263
@@ -1667,7 +1667,7 @@
 "Indian Institute of Technology Roorkee (IITR)",2020,28.8,"India","Asia","Public",10,0.485714285714286,0.00650584559889207,0.0245679680961056
 "Rensselaer Polytechnic Institute",2020,28.8,"United States","North America","Private",10,0.342857142857143,0.0513382073496731,0.0314607847964157
 "Swinburne University of Technology",2020,28.8,"Australia","Oceania","Public",10,0.4,0.128828625720635,0.0465757471320959
-"Universidad de Palermo (UP)",2020,28.8,"Argentina","Latin America","Private",0,0.171428571428571,0.0659924635253953,0.0410122593668455
+"Universidad de Palermo (UP)",2020,28.8,"Argentina","Latin America","Private",5,0.171428571428571,0.0659924635253953,0.0410122593668455
 "National Research Tomsk Polytechnic University",2020,28.7,"Russia","Europe","Public",10,0.171428571428571,0.0887951302779478,0.0763133277534341
 "University of Macau",2020,28.7,"Macau SAR","Asia","Public",10,0.371428571428571,0.126284260362653,0.0320023632514401
 "University of Trento",2020,28.6,"Italy","Europe","Public",10,0.371428571428571,0.0237688814454572,0.0524838757323618
@@ -1718,7 +1718,7 @@
 "Universidad Politécnica de Madrid (UPM)",2020,26.5,"Spain","Europe","Public",10,0.371428571428571,0.171309865052015,0.122396730835508
 "Beijing Institute of Technology",2020,26.4,"China (Mainland)","Asia","Public",10,0.314285714285714,0.0681181358497858,0.138397912461228
 "ITMO University",2020,26.4,"Russia","Europe","Public",10,0.171428571428571,0.0752681245772811,0.0910344148490966
-"Universidad de Belgrano",2020,26.3,"Argentina","Latin America","Private",0,0.171428571428571,0.0244130245740604,0.0398798680517946
+"Universidad de Belgrano",2020,26.3,"Argentina","Latin America","Private",5,0.171428571428571,0.0244130245740604,0.0398798680517946
 "Peter the Great St. Petersburg Polytechnic University",2020,26.2,"Russia","Europe","Public",10,0.2,0.164932848078843,0.115947023780218
 "Universidade Federal de São Paulo",2020,26.2,"Brazil","Latin America","Public",10,0.171428571428571,0.00492769493381429,0.12067352666043
 "University of Saskatchewan",2020,26.2,"Canada","North America","Public",10,0.342857142857143,0.108924603046797,0.069666683078135
@@ -1761,7 +1761,7 @@
 "Christian-Albrechts-University zu Kiel",2020,24.8,"Germany","Europe","Public",10,0.257142857142857,0.0695996650455731,0.142238196051401
 "University of Stirling",2020,24.8,"United Kingdom","Europe","Public",10,0.4,0.082546941930497,0.0358426468416129
 "South China University of Technology",2020,24.7,"China (Mainland)","Asia","Public",10,0.4,0.054365680054108,0.14799862143666
-"Universidad Externado de Colombia ",2020,24.7,"Colombia","Latin America","Private",0,0.342857142857143,0.00457341621308255,0.0501698586972576
+"Universidad Externado de Colombia ",2020,24.7,"Colombia","Latin America","Private",5,0.342857142857143,0.00457341621308255,0.0501698586972576
 "UNESP",2020,24.6,"Brazil","Latin America","Public",10,0.4,0.0480208702373667,0.13756092757619
 "Universiti Teknologi PETRONAS (UTP)",2020,24.6,"Malaysia","Asia","Private",10,0.314285714285714,0.0205803729588715,0.0215646693909704
 "Aberystwyth University",2020,24.5,"United Kingdom","Europe","Public",10,0.342857142857143,0.044832361750781,0.0254049529811432
@@ -1773,7 +1773,7 @@
 "Universidad de Santiago de Chile (USACH)",2020,24.4,"Chile","Latin America","Public",7.5,0.485714285714286,0.0162001996843699,0.0656786962729555
 "Indian Institute of Technology Guwahati (IITG)",2020,24.3,"India","Asia","Public",10,0.485714285714286,0.00135270057006667,0.0201861060509084
 "Lappeenranta-Lahti University of Technology LUT",2020,24.3,"Finland","Europe","Public",10,0.4,0.0128506554156334,0.0146718526906602
-"Auezov South Kazakhstan University (SKU)",2020,24.3,"Kazakhstan","Asia","Public",0,0.171428571428571,0.0714998872749525,0.14287824331643
+"Auezov South Kazakhstan University (SKU)",2020,24.3,"Kazakhstan","Asia","Public",5,0.171428571428571,0.0714998872749525,0.14287824331643
 "Universidad de Montevideo (UM)",2020,24.3,"Uruguay","Latin America","Private",2.5,0.2,0.00244774388869207,0.0145241494756536
 "Aix-Marseille University",2020,24.3,"France","Europe","Public",10,0.485714285714286,0.278624110277304,0.200334793954015
 "University of Delaware",2020,24.3,"United States","North America","Public",10,0.485714285714286,0.0752681245772811,0.0626261631628182
@@ -2108,7 +2108,7 @@
 "Universität Jena",2021,32.1,"Germany","Europe","Public",10,0.114285714285714,0.0743019098843763,0.195657525478805
 "IE University",2021,32,"Spain","Europe","Private",7.5,0.2,0.126155431736932,0.0325931761114667
 "Jagiellonian University",2021,31.9,"Poland","Europe","Public",10,0.228571428571429,0.0936262037424716,0.201319482054059
-"Pontificia Universidad Católica Argentina",2021,31.9,"Argentina","Latin America","Private",0,0.114285714285714,0.0342362072852588,0.18733691103343
+"Pontificia Universidad Católica Argentina",2021,31.9,"Argentina","Latin America","Private",5,0.114285714285714,0.0342362072852588,0.18733691103343
 "RUDN University",2021,31.9,"Russia","Europe","Public",7.5,0.171428571428571,0.267931334342491,0.191521835458618
 "Universitat Politècnica de València",2021,31.9,"Spain","Europe","Public",10,0.228571428571429,0.0833843279976811,0.13022500123086
 "Virginia Polytechnic Institute and State University",2021,31.9,"United States","North America","Public",10,0.342857142857143,0.144191439337821,0.137954802816208
@@ -2155,7 +2155,7 @@
 "Sultan Qaboos University",2021,29.1,"Oman","Asia","Public",7.5,0.2,0.00798737479467938,0.0450987149820294
 "University of Waikato",2021,29.1,"New Zealand","Oceania","Public",10,0.4,0.0731102450964604,0.0292944709763183
 "Nankai University",2021,29,"China (Mainland)","Asia","Public",10,0.314285714285714,0.0479242487680763,0.140121116636305
-"Universidad de Palermo (UP)",2021,29,"Argentina","Latin America","Private",0,0.171428571428571,0.0659924635253953,0.0410122593668455
+"Universidad de Palermo (UP)",2021,29,"Argentina","Latin America","Private",5,0.171428571428571,0.0659924635253953,0.0410122593668455
 "Taylor's University",2021,28.9,"Malaysia","Asia","Private",10,0.2,0.0548809945569906,0.0284574860912806
 "Universidade Federal do Rio de Janeiro",2021,28.8,"Brazil","Latin America","Public",10,0.314285714285714,0.0178749718187381,0.196100635123825
 "University of Kent",2021,28.8,"United Kingdom","Europe","Public",10,0.371428571428571,0.113208154852008,0.196937620008862
@@ -2244,7 +2244,7 @@
 "Universidad ORT Uruguay",2021,25.3,"Uruguay","Latin America","Private",7.5,0.171428571428571,0.00199684369866984,0.0305253311013736
 "Koç University",2021,25.2,"Turkey","Asia","Private",7.5,0.314285714285714,0.0118522335662984,0.0275712668012407
 "National Central University",2021,25.2,"Taiwan","Asia","Public",10,0.314285714285714,0.0353634577603143,0.0484958889271823
-"Universidad de Belgrano",2021,25.2,"Argentina","Latin America","Private",0,0.171428571428571,0.0244130245740604,0.0398798680517946
+"Universidad de Belgrano",2021,25.2,"Argentina","Latin America","Private",5,0.171428571428571,0.0244130245740604,0.0398798680517946
 "University of Saskatchewan",2021,25.2,"Canada","North America","Public",10,0.342857142857143,0.108924603046797,0.069666683078135
 "Yokohama City University",2021,25.2,"Japan","Asia","Public",10,0.171428571428571,0.00347837289445715,0.0437693860469696
 "Indian Institute of Technology Guwahati (IITG)",2021,25.1,"India","Asia","Public",10,0.485714285714286,0.00135270057006667,0.0201861060509084
@@ -2252,7 +2252,7 @@
 "Martin-Luther-Universität Halle-Wittenberg",2021,25.1,"Germany","Europe","Public",7.5,0.2,0.0541724371155271,0.144847619516518
 "Rensselaer Polytechnic Institute",2021,25.1,"United States","North America","Private",10,0.342857142857143,0.0513382073496731,0.0314607847964157
 "Swansea University",2021,25,"United Kingdom","Europe","Public",7.5,0.314285714285714,0.117266256562208,0.161981192457289
-"Umm Al-Qura University ",2021,25,"Saudi Arabia","Asia","Public",0,0.228571428571429,0.114850719829946,0.178179311703018
+"Umm Al-Qura University ",2021,25,"Saudi Arabia","Asia","Public",5,0.228571428571429,0.114850719829946,0.178179311703018
 " Western Sydney University",2021,25,"Australia","Oceania","Public",7.5,0.628571428571429,0.229411575252021,0.0797597361035892
 "Amirkabir University of Technology",2021,24.8,"Iran, Islamic Republic of","Asia","Public",10,0.628571428571429,0.00756868176108731,0.0258480626261632
 "Concordia University",2021,24.8,"Canada","North America","Public",10,0.714285714285714,0.37737125189217,0.112352912215056
@@ -2267,7 +2267,7 @@
 "University of Stirling",2021,24.6,"United Kingdom","Europe","Public",10,0.4,0.082546941930497,0.0358426468416129
 "Chiba University",2021,24.5,"Japan","Asia","Public",10,0.228571428571429,0.0237044671325969,0.0881295849539658
 "National Taipei University of Technology",2021,24.5,"Taiwan","Asia","Public",10,0.314285714285714,0.0334954426873651,0.0351533651715819
-"Auezov South Kazakhstan University (SKU)",2021,24.4,"Kazakhstan","Asia","Public",0,0.171428571428571,0.0714998872749525,0.14287824331643
+"Auezov South Kazakhstan University (SKU)",2021,24.4,"Kazakhstan","Asia","Public",5,0.171428571428571,0.0714998872749525,0.14287824331643
 "Sogang University",2021,24.4,"South Korea","Asia","Private",10,0.257142857142857,0.0460240265386969,0.0500713898872532
 "Universidad de Montevideo (UM)",2021,24.3,"Uruguay","Latin America","Private",2.5,0.2,0.00244774388869207,0.0145241494756536
 "Chang Gung University",2021,24.2,"Taiwan","Asia","Private",10,0.228571428571429,0.0122709265998905,0.0437693860469696
@@ -2603,7 +2603,7 @@
 "Swinburne University of Technology",2022,33,"Australia","Oceania","Public",10,0.318181818181818,0.128828625720635,0.0465757471320959
 " University of Dundee",2022,32.9,"United Kingdom","Europe","Public",7.5,0.318181818181818,0.0974266482012303,0.0469203879671114
 "Friedrich-Alexander-Universität Erlangen-Nürnberg",2022,32.9,"Germany","Europe","Public",10,0.727272727272727,0.159199974234275,0.0545024863374526
-"Pontificia Universidad Católica Argentina",2022,32.9,"Argentina","Latin America","Private",0,0.0909090909090909,0.0342362072852588,0.18733691103343
+"Pontificia Universidad Católica Argentina",2022,32.9,"Argentina","Latin America","Private",5,0.0909090909090909,0.0342362072852588,0.18733691103343
 "University of Macau",2022,32.9,"Macau SAR","Asia","Public",10,0.295454545454545,0.126284260362653,0.0320023632514401
 "Aalborg University",2022,32.8,"Denmark","Europe","Public",10,0.227272727272727,0.0796805050082128,0.0844862389838019
 "University of South Australia",2022,32.8,"Australia","Oceania","Public",10,0.295454545454545,0.157364166317756,0.0750332332233765
@@ -2670,7 +2670,7 @@
 "University of Pisa",2022,28.7,"Italy","Europe","Public",10,0.409090909090909,0.0485361847402493,0.0884249913839791
 "Università Vita-Salute San Raffaele",2022,28.6,"Italy","Europe","Private",10,0.113636363636364,0.00302747270443493,0.0222047166559992
 "SOAS University of London ",2022,28.5,"United Kingdom","Europe","Public",10,0.25,0.0772327611195208,0.0147703215006647
-"Universidad de Palermo (UP)",2022,28.5,"Argentina","Latin America","Private",0,0.136363636363636,0.0659924635253953,0.0410122593668455
+"Universidad de Palermo (UP)",2022,28.5,"Argentina","Latin America","Private",5,0.136363636363636,0.0659924635253953,0.0410122593668455
 "Peter the Great St. Petersburg Polytechnic University",2022,28.4,"Russia","Europe","Public",10,0.159090909090909,0.164932848078843,0.115947023780218
 "Ruhr-Universität Bochum",2022,28.4,"Germany","Europe","Public",10,0.795454545454545,0.211407774807562,0.0606567869627296
 "Indian Institute of Technology Guwahati (IITG)",2022,28.3,"India","Asia","Public",10,0.386363636363636,0.00135270057006667,0.0201861060509084
@@ -2723,7 +2723,7 @@
 "Illinois Institute of Technology",2022,26.2,"United States","North America","Private",10,0.340909090909091,0.07504267448227,0.0197922308108907
 "HUFS - Hankuk (Korea) University of Foreign Studies ",2022,26.1,"South Korea","Asia","Private",7.5,0.159090909090909,0.0944635898096557,0.115848554970213
 "The American University in Cairo",2022,26.1,"Egypt","Africa","Private",7.5,0.227272727272727,0.00686012431962382,0.0284574860912806
-"Umm Al-Qura University ",2022,26,"Saudi Arabia","Asia","Public",0,0.181818181818182,0.114850719829946,0.178179311703018
+"Umm Al-Qura University ",2022,26,"Saudi Arabia","Asia","Public",5,0.181818181818182,0.114850719829946,0.178179311703018
 "Universität  Leipzig",2022,26,"Germany","Europe","Public",10,0.159090909090909,0.102225514509324,0.202796514204126
 "Universität des Saarlandes",2022,26,"Germany","Europe","Public",7.5,0.136363636363636,0.0946568327482367,0.138988725321255
 "University of Milano-Bicocca ",2022,25.9,"Italy","Europe","Public",10,0.954545454545455,0.0693420077941319,0.038599773521737
@@ -2744,7 +2744,7 @@
 "Airlangga University",2022,25.3,"Indonesia","Asia","Public",7.5,0.204545454545455,0.0159425424329286,0.146866230121609
 "Amirkabir University of Technology",2022,25.3,"Iran, Islamic Republic of","Asia","Public",10,0.5,0.00756868176108731,0.0258480626261632
 "Southeast University",2022,25.3,"China (Mainland)","Asia","Public",10,0.25,0.0483107346452382,0.167840086652553
-"Universidad de Belgrano",2022,25.3,"Argentina","Latin America","Private",0,0.136363636363636,0.0244130245740604,0.0398798680517946
+"Universidad de Belgrano",2022,25.3,"Argentina","Latin America","Private",5,0.136363636363636,0.0244130245740604,0.0398798680517946
 "National Taipei University of Technology",2022,25.2,"Taiwan","Asia","Public",10,0.25,0.0334954426873651,0.0351533651715819
 "Universidad de Montevideo (UM)",2022,25.2,"Uruguay","Latin America","Private",2.5,0.159090909090909,0.00244774388869207,0.0145241494756536
 "Ben-Gurion University of The Negev",2022,25.1,"Israel","Asia","Public",10,0.340909090909091,0.0565235595349287,0.0521884693023485
@@ -2758,7 +2758,7 @@
 "University of Texas Dallas",2022,24.8,"United States","North America","Public",10,0.5,0.155496151244807,0.0561272217025257
 "Chang Gung University",2022,24.7,"Taiwan","Asia","Private",10,0.181818181818182,0.0122709265998905,0.0437693860469696
 "Université de Liège",2022,24.7,"Belgium","Europe","Public",10,0.295454545454545,0.141099552320526,0.079710501698587
-"Auezov South Kazakhstan University (SKU)",2022,24.6,"Kazakhstan","Asia","Public",0,0.136363636363636,0.0714998872749525,0.14287824331643
+"Auezov South Kazakhstan University (SKU)",2022,24.6,"Kazakhstan","Asia","Public",5,0.136363636363636,0.0714998872749525,0.14287824331643
 "Stellenbosch University",2022,24.6,"South Africa","Africa","Public",10,0.568181818181818,0.057199909819962,0.0459849342720693
 "The Catholic University of Korea ",2022,24.6,"South Korea","Asia","Private",10,0.113636363636364,0.0119166478791587,0.0821229875436955
 "Aston University",2022,24.5,"United Kingdom","Europe","Public",10,0.363636363636364,0.0553641019034429,0.0359411156516174
