@@ -44,6 +44,9 @@
     .range([ height, 0 ]);
   const Y_axis = svg.append("g")  
 
+  // Add data into a container
+  const container = svg.append("g")
+
   // Parse the Data
   function Year(EnterYear) {
     Promise.all([
@@ -99,7 +102,7 @@
       // ----------------
 
       // Show the bars
-      svg.append("g")
+      container
         .selectAll("g")
         // Enter in the stack data = loop key per key = group per group
         .data(stackedData)
@@ -117,22 +120,25 @@
             .attr("height", d => y(d[0]) - y(d[1]))
             .attr("width",x.bandwidth())
             .attr("stroke", "grey")
-            .on("mouseover", function (event, d){ // What happens when user hover a bar
-              // what subgroup are we hovering?
-              const subGroupName = d3.select(this.parentNode).datum().key
-              // Reduce opacity of all rect to 0.2
-              d3.selectAll(".myRect").style("opacity", 0.2)
-              // Highlight all rects of this subgroup with opacity 1. 
-              // It is possible to select them since they have a specific class = their name.
-              d3.selectAll("."+subGroupName).style("opacity",1)
-            })
-            .on("mouseleave", function (event, d){ // When user do not hover anymore
-              // Back to normal opacity: 1
-              d3.selectAll(".myRect")
-              .style("opacity",1)
-            })
+          .on("mouseover", function (event, d){ // What happens when user hover a bar
+            // what subgroup are we hovering?
+            const subGroupName = d3.select(this.parentNode).datum().key
+            // Reduce opacity of all rect to 0.2
+            d3.selectAll(".myRect").style("opacity", 0.2)
+            // Highlight all rects of this subgroup with opacity 1. 
+            // It is possible to select them since they have a specific class = their name.
+            d3.selectAll("."+subGroupName).style("opacity",1)
+          })
+          .on("mouseleave", function (event, d){ // When user do not hover anymore
+            // Back to normal opacity: 1
+            d3.selectAll(".myRect")
+            .style("opacity",1)
+          })
     })
   }
   
+  // Initialize the plot
+  Year(2017);
+
   </script>
 </body>
