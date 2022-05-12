@@ -81,7 +81,7 @@
       x.domain(groups)
       X_axis.call(d3.axisBottom(x).tickSizeOuter(0));
 
-      y.domain([0, 50])//
+      y.domain([0, 200])//
       Y_axis.call(d3.axisLeft(y));
 
       // color palette shows one color per subgroup
@@ -92,7 +92,7 @@
       //stack the data? --> stack per subgroup
       const stackedData = d3.stack()
         .keys(subgroups)
-        (ThisYear.slice(0,2))
+        (ThisYear.slice(0, 2))
 
       //console.log(ThisYear)
       //console.log(stackedData)
