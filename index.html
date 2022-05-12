@@ -76,12 +76,13 @@
 
       // Value of the first column called group
       //console.log(ThisYear)
-      const groups = ThisYear.slice(0,2).map(d => d.University)
+      // 拿掉slice
+      const groups = ThisYear.slice(50, 52).map(d => d.University)
 
       x.domain(groups)
       X_axis.call(d3.axisBottom(x).tickSizeOuter(0));
 
-      y.domain([0, 200])//
+      y.domain([0, 300])//
       Y_axis.call(d3.axisLeft(y));
 
       // color palette shows one color per subgroup
@@ -92,7 +93,8 @@
       //stack the data? --> stack per subgroup
       const stackedData = d3.stack()
         .keys(subgroups)
-        (ThisYear.slice(0, 2))
+        // 拿掉slice
+        (ThisYear.slice(50, 52))
 
       //console.log(ThisYear)
       //console.log(stackedData)
