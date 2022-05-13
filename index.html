@@ -71,7 +71,7 @@
     }
 
     // Parse the Data
-    function Year(EnterYear) {
+    function Year(EnterYear){
       Promise.all([
         d3.json("https://raw.githubusercontent.com/ShallyLai/IVFinalProject/main/Continents.json"),
         d3.csv("https://raw.githubusercontent.com/ShallyLai/IVFinalProject/main/QS.csv")
@@ -115,7 +115,7 @@
           .attr("dy", ".10em")
           .attr("transform", "rotate(-65)");
           
-        y.domain([0, 300])
+        y.domain([0, 300]);
         Y_axis.call(d3.axisLeft(y));
 
         // color palette shows one color per subgroup
@@ -127,7 +127,7 @@
         const stackedData = d3.stack()
           .keys(subgroups)
           // 拿掉slice
-          (ThisYear.slice(50, 55))
+          (ThisYear.slice(50, 55));
         //console.log(ThisYear)
         //console.log(stackedData)
 
@@ -177,7 +177,7 @@
             })
             .on("mouseout", function(event, d) {
               tooltip.style("opacity", 0);
-            })
+            });
       })
     }
     
