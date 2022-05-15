@@ -28,7 +28,7 @@
     const svg = d3.select("#myStackBar")
       .append("svg")
       .attr("width", width + margin.left + margin.right)
-      .attr("height", height*2 + margin.top + margin.bottom )
+      .attr("height", height*1.5 + margin.top + margin.bottom )
       .append("g")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -70,6 +70,39 @@
         return ("Low");
     }
 
+    function MergeSort(array){
+      if (array.length <= 1){
+        return array;
+      };
+      const middle = Math.floor(array.length / 2);
+      //console.log("Hi MergeSort");
+      return Merge(MergeSort(array.slice(0, middle)), MergeSort(array.slice(middle)));
+    }
+      
+    function Merge(left, right){
+      let result = [];
+      let leftIndex = 0;
+      let rightIndex = 0;
+      while(leftIndex < left.length && rightIndex < right.length){
+        // console.log("Hi Merge");
+        let leftValue = Number(left[leftIndex].ResearchOutput) + left[leftIndex].SFRatio + left[leftIndex].InterStu;
+        let rightValue = Number(right[rightIndex].ResearchOutput) + right[rightIndex].SFRatio + right[rightIndex].InterStu;
+        if(leftValue > rightValue){
+          result.push(left[leftIndex]);
+          leftIndex++;
+          //console.log("Hi Left");
+          //console.log(leftValue, rightValue);
+        } 
+        else{
+          result.push(right[rightIndex]);
+          rightIndex++;
+          //console.log("Hi right");
+          //console.log(leftValue, rightValue);
+        }
+      }
+      return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+    }
+
     // Parse the Data
     function Year(EnterYear){
       Promise.all([
@@ -79,8 +112,8 @@
 
         let dataGeo = initialize[0]; // Continent map
         let data = initialize[1]; // QS data
-        var NowYear = EnterYear; // select year
-        const ThisYear = [];
+        let NowYear = EnterYear; // select year
+        let ThisYear = [];
         const ResOpt = new Map();
         const SFRatio = new Map();
         const IntStu = new Map();
@@ -98,13 +131,16 @@
         //console.log(data)
         //console.log(ThisYear);
 
+        ThisYear = MergeSort(ThisYear);
+        //console.log(ThisYear);
+
         // List of subgroups is the header of ThisYear array  
         const subgroups = Object.keys(ThisYear[0]).slice(1);
         //console.log(subgroups)
 
         // Value of the first column called group
         // 拿掉slice
-        const groups = ThisYear.slice(50, 55).map(d => d.University)
+        const groups = ThisYear.slice(0, 50).map(d => d.University)
 
         x.domain(groups)
         X_axis.attr("transform", `translate(0, ${height})`)
@@ -113,7 +149,7 @@
           .style("text-anchor", "end")
           .attr("dx", "-.8em")
           .attr("dy", ".10em")
-          .attr("transform", "rotate(-65)");
+          .attr("transform", "rotate(-78)");
           
         y.domain([0, 300]);
         Y_axis.call(d3.axisLeft(y));
@@ -127,7 +163,7 @@
         const stackedData = d3.stack()
           .keys(subgroups)
           // 拿掉slice
-          (ThisYear.slice(50, 55));
+          (ThisYear.slice(0, 50));
         //console.log(ThisYear)
         //console.log(stackedData)
 
@@ -152,28 +188,25 @@
               .attr("height", d => y(d[0]) - y(d[1]))
               .attr("width",x.bandwidth())
               .attr("stroke", "grey")
-            .on("mouseover", function (event, d){ // What happens when user hover a bar
-              // what subgroup are we hovering?
-              const subGroupName = d3.select(this.parentNode).datum().key
-              // Reduce opacity of all rect to 0.2
-              d3.selectAll(".myRect").style("opacity", 0.2)
-              // Highlight all rects of this subgroup with opacity 1. 
-              // It is possible to select them since they have a specific class = their name.
-              d3.selectAll("."+subGroupName).style("opacity",1)
+            .on("mouseover", function (event, d){
+              //const subGroupName = d3.select(this.parentNode).datum().key
+              //d3.selectAll(".myRect").style("opacity", 0.2)
+              //d3.selectAll("."+subGroupName).style("opacity",1)
+              //console.log(subGroupName);
               tooltip
                 .transition()
                 .duration(200)
                 .style("opacity", 1);
               tooltip
                 .style("left", event.pageX + "px")
-                .style("top", event.pageY - 120 + "px")
+                .style("top", event.pageY - 150 + "px")
                 .html("西元" + NowYear + "  " + d.data.University + "<br>學術產出：" + RSOutput(ResOpt.get(d.data.University)) + "<br>師生比：1:" + SFRatio.get(d.data.University) + "<br>國際學生：" + IntStu.get(d.data.University) + "人");
               //console.log(d);
             })
             .on("mouseleave", function (event, d){ // When user do not hover anymore
-              // Back to normal opacity: 1
               d3.selectAll(".myRect")
               .style("opacity",1)
+              tooltip.style("opacity", 0);
             })
             .on("mouseout", function(event, d) {
               tooltip.style("opacity", 0);
