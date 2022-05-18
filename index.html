@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-
 <p>
-  <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: right">
-    Research_Output = <span id="nWeight_ResearchO-value">1</span>
-    <input type="range" min="0" max="10" id="nWeight_ResearchO">
-  </label>
-  <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: right">
-    Student_Faculty_Ratio = <span id="nWeight_SFRatioO-value">1</span>
-  <input type="range" min="0" max="10" id="nWeight_SFRatioO">
-  </label>
-  <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: right">
-    International_Students = <span id="nWeight_InterStuO-value">1</span>
-    <input type="range" min="0" max="10" id="nWeight_InterStuO">
-  </label>
-  <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: right">
-    Faculty_Count = <span id="nWeight_FC-value">1</span>
-    <input type="range" min="0" max="10" id="nWeight_FC">
-  </label>
+  <div style="text-align:center;">
+    <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
+      Research_Output = <span id="nWeight_ResearchO-value">1</span>
+      <input type="range" min="0" max="10" id="nWeight_ResearchO">
+    </label>
+    <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
+      Student_Faculty_Ratio = <span id="nWeight_SFRatioO-value">1</span>
+      <input type="range" min="0" max="10" id="nWeight_SFRatioO">
+    </label>
+    <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
+      International_Students = <span id="nWeight_InterStuO-value">1</span>
+      <input type="range" min="0" max="10" id="nWeight_InterStuO">
+    </label>
+    <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
+      Faculty_Count = <span id="nWeight_FC-value">1</span>
+      <input type="range" min="0" max="10" id="nWeight_FC">
+    </label>
+  </div>
 </p>
+
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v6.js"></script>
 
@@ -106,8 +108,8 @@
       let rightIndex = 0;
       while(leftIndex < left.length && rightIndex < right.length){
         // console.log("Hi Merge");
-        let leftValue = Number(left[leftIndex].ResearchOutput) + left[leftIndex].SFRatio + left[leftIndex].InterStu+ left[leftIndex].FC;
-        let rightValue = Number(right[rightIndex].ResearchOutput) + right[rightIndex].SFRatio + right[rightIndex].InterStu+right[rightIndex].FC;
+        let leftValue = Number(left[leftIndex].ResearchOutput) + left[leftIndex].SFRatio + left[leftIndex].InterStu + left[leftIndex].FC;
+        let rightValue = Number(right[rightIndex].ResearchOutput) + right[rightIndex].SFRatio + right[rightIndex].InterStu + right[rightIndex].FC;
         if(leftValue > rightValue){
           result.push(left[leftIndex]);
           leftIndex++;
@@ -123,21 +125,22 @@
       }
       return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
     }
+
     // when the input range changes update the weight 
-     d3.select("#nWeight_ResearchO").on("input", function() {
-        update(+this.value, "Research",clonedThisYear);
-      });
-      d3.select("#nWeight_SFRatioO").on("input", function() {
-        update(+this.value, "SFRatio",clonedThisYear);
-      });
-      d3.select("#nWeight_InterStuO").on("input", function() {
-        update(+this.value, "InterStu",clonedThisYear);
-      });
-      d3.select("#nWeight_FC").on("input", function() {
-        update(+this.value, "FC",clonedThisYear);
-      });
-    function update(nWeight, name, clonedThisYear) {
-      
+    d3.select("#nWeight_ResearchO").on("input", function() {
+      update(+this.value, "Research",clonedThisYear);
+    });
+    d3.select("#nWeight_SFRatioO").on("input", function() {
+      update(+this.value, "SFRatio",clonedThisYear);
+    });
+    d3.select("#nWeight_InterStuO").on("input", function() {
+      update(+this.value, "InterStu",clonedThisYear);
+    });
+    d3.select("#nWeight_FC").on("input", function() {
+      update(+this.value, "FC",clonedThisYear);
+    });
+    
+    function update(nWeight, name, clonedThisYear) {  
       if(name == "Research"){
         d3.select("#nWeight_ResearchO-value").text(nWeight);
         d3.select("#nWeight_ResearchO").property("value", nWeight);
@@ -164,91 +167,95 @@
           clonedThisYear[i].SFRatio *= SFRatio_weight;
           clonedThisYear[i].InterStu *= InterStu_weight;
           clonedThisYear[i].FC *= FC_weight;
-        }
+      }
       
       draw(clonedThisYear);  
     }
-    function draw(clonedThisYear){
-      
+
+    function draw(clonedThisYear){  
       clonedThisYear = MergeSort(clonedThisYear);
-       // List of subgroups is the header of ThisYear array  
-       const subgroups = Object.keys(clonedThisYear[0]).slice(1);
-        //console.log(subgroups)
+      // List of subgroups is the header of ThisYear array  
+      const subgroups = Object.keys(clonedThisYear[0]).slice(1);
+      //console.log(subgroups)
 
-        // Value of the first column called group
+      // Value of the first column called group
+      // 拿掉slice
+      const groups = clonedThisYear.slice(0, 50).map(d => d.University)
+
+      x.domain(groups)
+      X_axis.attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(x).tickSizeOuter(0))
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".10em")
+        .attr("transform", "rotate(-78)");
+        
+      y.domain([0, 100*(Research_weight + SFRatio_weight + InterStu_weight + FC_weight)]);
+      Y_axis.call(d3.axisLeft(y));
+
+      // color palette shows one color per subgroup
+      const color = d3.scaleOrdinal()
+        .domain(subgroups)
+        .range(d3.schemeSet2);
+
+      //stack the data? --> stack per subgroup
+      const stackedData = d3.stack()
+        .keys(subgroups)
         // 拿掉slice
-        const groups = clonedThisYear.slice(0, 50).map(d => d.University)
-
-        x.domain(groups)
-        X_axis.attr("transform", `translate(0, ${height})`)
-          .call(d3.axisBottom(x).tickSizeOuter(0))
-          .selectAll("text")
-          .style("text-anchor", "end")
-          .attr("dx", "-.8em")
-          .attr("dy", ".10em")
-          .attr("transform", "rotate(-78)");
-          
-        y.domain([0, 100*(Research_weight + SFRatio_weight + InterStu_weight + FC_weight)]);
-        Y_axis.call(d3.axisLeft(y));
-
-        // color palette shows one color per subgroup
-        const color = d3.scaleOrdinal()
-          .domain(subgroups)
-          .range(d3.schemeSet2);
-
-        //stack the data? --> stack per subgroup
-        const stackedData = d3.stack()
-          .keys(subgroups)
-          // 拿掉slice
-          (clonedThisYear.slice(0, 50));
-        //console.log(ThisYear)
-        //console.log(stackedData)
+        (clonedThisYear.slice(0, 50));
+      //console.log(ThisYear)
+      //console.log(stackedData)
 
 
-        // Show the bars
-        // Highlight a specific subgroup when hovered        
-        container
-          .selectAll("g")
-          // Enter in the stack data = loop key per key = group per group
-          .data(stackedData)
-          .join("g")
-            .attr("fill", d => color(d.key))
-            .attr("class", d => "myRect " + d.key) // Add a class to each subgroup: their name
-            .selectAll("rect")
-            // enter a second time = loop subgroup per subgroup to add all rectangles
-            .data(d => d)
-            .join("rect")
-              .attr("x", function(d){
-                return x(d.data.University)
-              })
-              .attr("y", d => y(d[1]))
-              .attr("height", d => y(d[0]) - y(d[1]))
-              .attr("width",x.bandwidth())
-              .attr("stroke", "grey")
-            .on("mouseover", function (event, d){
-              //const subGroupName = d3.select(this.parentNode).datum().key
-              //d3.selectAll(".myRect").style("opacity", 0.2)
-              //d3.selectAll("."+subGroupName).style("opacity",1)
-              //console.log(subGroupName);
-              tooltip
-                .transition()
-                .duration(200)
-                .style("opacity", 1);
-              tooltip
-                .style("left", event.pageX + "px")
-                .style("top", event.pageY - 150 + "px")
-                .html("西元" + NowYear + "  " + d.data.University + "<br>學術產出：" + RSOutput(ResOpt.get(d.data.University)) + "<br>師生比：1:" + SFRatio.get(d.data.University) + "<br>國際學生：" + IntStu.get(d.data.University) + "人"+"人<br>國際教師:"+FC.get(d.data.University)+"人");
-              //console.log(d);
+      // Show the bars
+      // Highlight a specific subgroup when hovered        
+      container
+        .selectAll("g")
+        // Enter in the stack data = loop key per key = group per group
+        .data(stackedData)
+        .join("g")
+          .attr("fill", d => color(d.key))
+          .attr("class", d => "myRect " + d.key) // Add a class to each subgroup: their name
+          .selectAll("rect")
+          // enter a second time = loop subgroup per subgroup to add all rectangles
+          .data(d => d)
+          .join("rect")
+            .transition()
+            .duration(200)
+            .attr("x", function(d){
+              return x(d.data.University)
             })
-            .on("mouseleave", function (event, d){ // When user do not hover anymore
-              d3.selectAll(".myRect")
-              .style("opacity",1)
-              tooltip.style("opacity", 0);
-            })
-            .on("mouseout", function(event, d) {
-              tooltip.style("opacity", 0);
-            });
-        }
+            .attr("y", d => y(d[1]))
+            .attr("height", d => y(d[0]) - y(d[1]))
+            .attr("width",x.bandwidth())
+            .attr("stroke", "grey")
+      container
+        .on("mouseover", function (d){
+          //const subGroupName = d3.select(this.parentNode).datum().key
+          //d3.selectAll(".myRect").style("opacity", 0.2)
+          //d3.selectAll("."+subGroupName).style("opacity",1)
+          //console.log(subGroupName);
+          tooltip
+            .transition()
+            .duration(200)
+            .style("opacity", 1);
+          tooltip
+            .style("left", event.pageX + "px")
+            .style("top", event.pageY - 150 + "px")
+            .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>學術產出：" + RSOutput(ResOpt.get(d.toElement.__data__.data.University)) + "<br>師生比：1:" + SFRatio.get(d.toElement.__data__.data.University) + "<br>國際學生：" + IntStu.get(d.toElement.__data__.data.University) + " 人<br>國際教師：" + FC.get(d.toElement.__data__.data.University) + " 人");
+          // console.log(d);
+        })
+        .on("mouseleave", function (d){ // When user do not hover anymore
+          d3.selectAll(".myRect")
+          .style("opacity",1)
+          tooltip.style("opacity", 0);
+        })
+        .on("mouseout", function(d) {
+          tooltip.style("opacity", 0);
+        });
+    }
+
     var clonedThisYear;
     var ResOpt ;
     var SFRatio;
@@ -261,6 +268,7 @@
     var InterStu_weight ;
     var FC_weight ;
     var NowYear;
+
     // Parse the Data
     function Year(EnterYear){
       Promise.all([
@@ -291,7 +299,7 @@
         //console.log(ThisYear);
 
         clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
-        console.log(clonedThisYear);
+        //console.log(clonedThisYear);
         Research_weight = 1 ;
         SFRatio_weight = 1;
         InterStu_weight = 1;  
