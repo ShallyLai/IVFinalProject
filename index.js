@@ -218,7 +218,7 @@ function draw(clonedThisYear){
 }
 
 // Filter region we want
-function setRegion(EnterRegion){
+function FilterRegion(EnterRegion){
   if(EnterRegion == "All"){
     SetRegion = false;
     Year(enter_Year);
