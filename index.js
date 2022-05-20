@@ -155,9 +155,10 @@
       Y_axis.call(d3.axisLeft(y));
 
       // color palette shows one color per subgroup
-      const color = d3.scaleOrdinal()
-        .domain(subgroups)
-        .range(d3.schemeSet2);
+    //   const color = d3.scaleOrdinal()
+    //     .domain(subgroups)
+    //     .range(d3.schemeSet2);
+        const color = ["#023e8a", "#0096c7", "#48cae4", "#ade8f4"]
 
       //stack the data? --> stack per subgroup
       const stackedData = d3.stack()
@@ -175,7 +176,7 @@
         // Enter in the stack data = loop key per key = group per group
         .data(stackedData)
         .join("g")
-          .attr("fill", d => color(d.key))
+          .attr("fill", (d, i) => color[i])
           .attr("class", d => "myRect " + d.key) // Add a class to each subgroup: their name
           .selectAll("rect")
           // enter a second time = loop subgroup per subgroup to add all rectangles

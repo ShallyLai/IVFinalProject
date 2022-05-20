@@ -10,28 +10,28 @@ legend_svg
     .attr('cx', 10)
     .attr('cy', 10)
     .attr('r', 8)
-    .style("fill","#afc1d6");
+    .style("fill","#ade8f4");
 
 legend_svg
     .append('circle')
     .attr('cx', 10)
     .attr('cy', 35)
     .attr('r', 8)
-    .style("fill","#afc1d6");
+    .style("fill","#48cae4");
 
 legend_svg
     .append('circle')
     .attr('cx', 10)
     .attr('cy', 60)
     .attr('r', 8)
-    .style("fill","#afc1d6");
+    .style("fill","#0096c7");
 
 legend_svg
     .append('circle')
     .attr('cx', 10)
     .attr('cy', 85)
     .attr('r', 8)
-    .style("fill","#afc1d6");
+    .style("fill","#023e8a");
 
 //文字	
 legend_svg.append('text')
@@ -39,25 +39,25 @@ legend_svg.append('text')
     .attr('y', 10)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Research_Output');	
+    .text('Faculty_Count');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 35)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Student_Faculty_Ratio');	
+    .text('International_Students');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 60)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('International_Students');	
+    .text('Student_Faculty_Ratio');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 85)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Faculty_Count');	
+    .text('Research_Output');	
