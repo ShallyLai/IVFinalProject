@@ -1,7 +1,7 @@
 
 const legend_svg = d3.select("#myLegend")
     .append("svg")
-    .attr("width", 200)
+    .attr("width", 250)
     .attr("height", 100)
     .attr("transform", "translate(700,40)");
 
@@ -39,25 +39,25 @@ legend_svg.append('text')
     .attr('y', 10)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Faculty_Count');	
+    .text('Faculty Count');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 35)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('International_Students');	
+    .text('International Students');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 60)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Student_Faculty_Ratio');	
+    .text('Student Faculty Ratio');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 85)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Research_Output');	
+    .text('Research Output');	
