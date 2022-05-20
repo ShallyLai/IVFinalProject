@@ -39,25 +39,25 @@ legend_svg.append('text')
     .attr('y', 10)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Faculty Count');	
+    .text('國際教師');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 35)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('International Students');	
+    .text('國際學生');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 60)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Student Faculty Ratio');	
+    .text('師生比');	
 
 legend_svg.append('text')
     .attr('x', 30)
     .attr('y', 85)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('Research Output');	
+    .text('學術產出');	
