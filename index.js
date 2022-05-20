@@ -288,7 +288,16 @@ function Year(EnterYear){
     });
     //console.log(data)
     //console.log(ThisYear);
-
+ 
+      d3.select("#nWeight_ResearchO-value").text(1);
+      d3.select("#nWeight_ResearchO").property("value", 1);
+      d3.select("#nWeight_SFRatioO-value").text(1);
+      d3.select("#nWeight_SFRatioO").property("value", 1);
+      d3.select("#nWeight_InterStuO-value").text(1);
+      d3.select("#nWeight_InterStuO").property("value", 1);
+      d3.select("#nWeight_FC-value").text(1);
+      d3.select("#nWeight_FC").property("value", 1);
+   
     clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
     //console.log(clonedThisYear);
     Research_weight = 1 ;
