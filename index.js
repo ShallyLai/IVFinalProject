@@ -217,18 +217,34 @@ function draw(clonedThisYear){
     });
 }
 
+// Filter region we want
+function setRegion(EnterRegion){
+  if(EnterRegion == "All"){
+    SetRegion = false;
+    Year(enter_Year);
+  }
+  else{
+    SetRegion = true;
+    Region = EnterRegion;
+    Year(enter_Year); 
+  }
+}
+
 var clonedThisYear;
-var ResOpt ;
+var ResOpt;
 var SFRatio;
 var IntStu;
 var FC;
 var subgroups;
-var ThisYear ;
-var Research_weight ;
-var SFRatio_weight ;
-var InterStu_weight ;
-var FC_weight ;
+var ThisYear;
+var Research_weight;
+var SFRatio_weight;
+var InterStu_weight;
+var FC_weight;
 var NowYear;
+var SetRegion = false;
+var Region;
+var enter_Year;
 
 // Parse the Data
 function Year(EnterYear){
@@ -245,15 +261,29 @@ function Year(EnterYear){
     SFRatio = new Map();
     IntStu = new Map();
     FC = new Map();
+    enter_Year = EnterYear;
+
     // Seperate data with year
     data.forEach(function(row){
-      if (row.year == NowYear) {
-        topush = {University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu:row.IntStu_Nor * 100, FC:row.FC_Nor * 100};
-        ThisYear.push(topush);
-        ResOpt.set(row.university, row.research_output);
-        SFRatio.set(row.university, row.student_faculty_ratio);
-        IntStu.set(row.university, row.international_students);
-        FC.set(row.university, row.faculty_count);
+      if(SetRegion == false){
+        if(row.year == NowYear){
+          topush = {University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu:row.IntStu_Nor * 100, FC:row.FC_Nor * 100};
+          ThisYear.push(topush);
+          ResOpt.set(row.university, row.research_output);
+          SFRatio.set(row.university, row.student_faculty_ratio);
+          IntStu.set(row.university, row.international_students);
+          FC.set(row.university, row.faculty_count);
+        }
+      }
+      else if(SetRegion == true){
+        if(row.year == NowYear && row.region == Region){
+          topush = {University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu:row.IntStu_Nor * 100, FC:row.FC_Nor * 100};
+          ThisYear.push(topush);
+          ResOpt.set(row.university, row.research_output);
+          SFRatio.set(row.university, row.student_faculty_ratio);
+          IntStu.set(row.university, row.international_students);
+          FC.set(row.university, row.faculty_count);
+        }
       }
     });
     //console.log(data)
@@ -271,4 +301,4 @@ function Year(EnterYear){
 }
 
 // Initialize the plot
-Year(2017);
+Year(2022);
