@@ -33,96 +33,94 @@ var map_tooltip = d3.select("#myMap")
 
 // Load external data and boot
 Promise.all([
-    d3.json("https://raw.githubusercontent.com/ShallyLai/IVFinalProject/main/Continents.json")]).then(function (loadData) {
+  d3.json("https://raw.githubusercontent.com/ShallyLai/IVFinalProject/main/Continents.json")])
+    .then(function (loadData){
 
-        let topo = loadData[0]
+    let topo = loadData[0]
 
-        let mapMouseOver = function (d) {
-            d3.selectAll(".Country")
-                .transition()
-                .duration(200)
-                .style("opacity", .3)
-            d3.select(this)
-                .transition()
-                .duration(100)
-                .style("opacity", 1)
-            /*
-                        map_tooltip
-                            .transition()
-                            .duration(200)
-                        map_tooltip
-                            .style("opacity", 1)
-                            .style("left", (d.pageX)  + "px")
-                            .style("top", (d.pageY)  + "px")
-                            .html("000000")
-            */
+    let mapMouseOver = function (d) {
+      d3.selectAll(".Country")
+        .transition()
+        .duration(200)
+        .style("opacity", .3)
+      d3.select(this)
+        .transition()
+        .duration(100)
+        .style("opacity", 1)
+      /*
+                  map_tooltip
+                      .transition()
+                      .duration(200)
+                  map_tooltip
+                      .style("opacity", 1)
+                      .style("left", (d.pageX)  + "px")
+                      .style("top", (d.pageY)  + "px")
+                      .html("000000")
+      */
+    }
+
+    let mapMouseLeave = function (d) {
+      d3.selectAll(".Country")
+        .transition()
+        .duration(100)
+        .style("opacity", 1)
+      d3.select(this)
+        .transition()
+        .duration(200)
+      /*
+                  map_tooltip
+                      .transition()
+                      .duration(200)
+                      .style("opacity", 0)
+                      */
+    }
+
+
+    ///////      HERE!!!   ///////
+    let mapClick = function (d) {
+      var thisContinent = d.target.__data__.properties.region;
+      console.log(thisContinent);
+      FilterRegion(thisContinent);
+    }
+
+    // Draw the map
+    map_svg.append("g")
+      .selectAll("path")
+      .data(topo.features)
+      .enter()
+      .append("path")
+      // draw each country
+      .attr("d", d3.geoPath()
+        .projection(projection)
+      )
+      // set the color of each country
+      .attr("fill", function (d) {
+        // console.log(d.properties.region);
+        switch (d.properties.region) {
+          case "Asia":
+            return ContinentsColor[0]
+            break;
+          case "South America":
+            return ContinentsColor[1]
+            break;
+          case "Africa":
+            return ContinentsColor[2]
+            break;
+          case "Oceania":
+            return ContinentsColor[3]
+            break;
+          case "North America":
+            return ContinentsColor[4]
+            break;
+          case "Europe":
+            return ContinentsColor[5]
+            break;
         }
-
-        let mapMouseLeave = function (d) {
-            d3.selectAll(".Country")
-                .transition()
-                .duration(100)
-                .style("opacity", 1)
-            d3.select(this)
-                .transition()
-                .duration(200)
-            /*
-                        map_tooltip
-                            .transition()
-                            .duration(200)
-                            .style("opacity", 0)
-                            */
-        }
-
-
-        ///////      HERE!!!   ///////
-        let mapClick = function (d) {
-            var thisContinent = d.target.__data__.properties.region;
-            console.log(thisContinent);
-
-        }
-
-        // Draw the map
-        map_svg.append("g")
-            .selectAll("path")
-            .data(topo.features)
-            .enter()
-            .append("path")
-            // draw each country
-            .attr("d", d3.geoPath()
-                .projection(projection)
-            )
-            // set the color of each country
-            .attr("fill", function (d) {
-                // console.log(d.properties.region);
-                switch (d.properties.region) {
-
-                    case "Asia":
-                        return ContinentsColor[0]
-                        break;
-                    case "South America":
-                        return ContinentsColor[1]
-                        break;
-                    case "Africa":
-                        return ContinentsColor[2]
-                        break;
-                    case "Oceania":
-                        return ContinentsColor[3]
-                        break;
-                    case "North America":
-                        return ContinentsColor[4]
-                        break;
-                    case "Europe":
-                        return ContinentsColor[5]
-                        break;
-
-                }
-            })
-            .attr("class", function (d) { return "Country" })
-            .style("opacity", 1)
-            .on("mouseover", mapMouseOver)
-            .on("mouseleave", mapMouseLeave)
-            .on("click", mapClick);
-
-
-    })
+      })
+      .attr("class", function (d) { return "Country" })
+      .style("opacity", 1)
+      .on("mouseover", mapMouseOver)
+      .on("mouseleave", mapMouseLeave)
+      .on("click", mapClick);
+      
+})
