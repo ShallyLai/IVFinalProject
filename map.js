@@ -100,7 +100,7 @@ Promise.all([
           case "Asia":
             return ContinentsColor[0]
             break;
-          case "South America":
+          case "Latin America":
             return ContinentsColor[1]
             break;
           case "Africa":
@@ -122,5 +122,5 @@ Promise.all([
       .on("mouseover", mapMouseOver)
       .on("mouseleave", mapMouseLeave)
       .on("click", mapClick);
-      
+
 })
