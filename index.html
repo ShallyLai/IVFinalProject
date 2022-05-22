@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+
 <head>
   <link rel="stylesheet" href="css.css">
 </head>
 
-<p>
+
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<body>
+  <div id="myMap"></div>
+  <p>
   <div style="text-align:center;">
     <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
       學術產出 = <span id="nWeight_ResearchO-value">1</span>
@@ -23,12 +31,7 @@
       <input type="range" min="0" max="10" id="nWeight_FC" value="1">
     </label>
   </div>
-</p>
-
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v6.js"></script>
-
-<body>
+  </p>
   <div style="text-align:center;">
     <button onclick="Year(2017);" style="text-align:center;">2017</button>
     <button onclick="Year(2018);" style="text-align:center;">2018</button>
@@ -40,12 +43,14 @@
 
   <!-- Create a div where the graph will take place -->
 
+
   <div id="myLegend"></div>
   <center>
-  <div class="container" >
-    <div id="myStackBar" style="text-align:center;"></div>
-  </div>
-</center>
+    <div class="container">
+      <div id="myStackBar" style="text-align:center;"></div>
+    </div>
+  </center>
+  <script src="./map.js"></script>
   <script src="./legend.js"></script>
   <script src="./index.js"></script>
 
