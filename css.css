@@ -3,3 +3,6 @@
     overflow-y: auto;
  } 
  
+ .m-1 {
+    margin: 20 !important;
+ }

@@ -3,42 +3,102 @@
 
 <head>
   <link rel="stylesheet" href="css.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 </head>
 
 
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v6.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
 <body>
-  <div id="myMap"></div>
-  <p>
-  <div style="text-align:center;">
-    <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
-      學術產出 = <span id="nWeight_ResearchO-value">1</span>
-      <input type="range" min="0" max="10" id="nWeight_ResearchO" value="1">
-    </label>
-    <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
-      師生比 = <span id="nWeight_SFRatioO-value">1</span>
-      <input type="range" min="0" max="10" id="nWeight_SFRatioO" value="1">
-    </label>
-    <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
-      國際學生 = <span id="nWeight_InterStuO-value">1</span>
-      <input type="range" min="0" max="10" id="nWeight_InterStuO" value="1">
-    </label>
-    <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
-      國際教師 = <span id="nWeight_FC-value">1</span>
-      <input type="range" min="0" max="10" id="nWeight_FC" value="1">
-    </label>
-  </div>
-  </p>
-  <div style="text-align:center;">
-    <button onclick="Year(2017);" style="text-align:center;">2017</button>
-    <button onclick="Year(2018);" style="text-align:center;">2018</button>
-    <button onclick="Year(2019);" style="text-align:center;">2019</button>
-    <button onclick="Year(2020);" style="text-align:center;">2020</button>
-    <button onclick="Year(2021);" style="text-align:center;">2021</button>
-    <button onclick="Year(2022);" style="text-align:center;">2022</button>
+
+  <div class="card m-1" style="width: 550px; ">
+    <div class="card-body">
+
+      <h5 class="card-title"><img src="calendar.svg" class="img-fluid" style="width: 20px;"><b> 年份選擇 </b></h5>
+
+      <div class="form-check form-check-inline m-1 ">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2017" onclick="Year(2017);">
+        <label class="form-check-label" for="flexRadioDefault1">2017</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2018" onclick="Year(2018);">
+        <label class="form-check-label" for="flexRadioDefault1">2018</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2019" onclick="Year(2019);">
+        <label class="form-check-label" for="flexRadioDefault1">2019</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2020" onclick="Year(2020);">
+        <label class="form-check-label" for="flexRadioDefault1">2020</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2021" onclick="Year(2021);">
+        <label class="form-check-label" for="flexRadioDefault1">2021</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2022" checked
+          onclick="Year(2022);">
+        <label class="form-check-label" for="flexRadioDefault2">2022</label>
+        <br>
+      </div>
+      <hr>
+      <h5 class="card-title">
+        <img src="world.svg" class="img-fluid" style="width: 20px;"><b> 地區選擇　</b>
+        <button type="button" class="btn btn-outline-secondary btn-sm">選擇全部</button>
+      </h5>
+      <div id="myMap"></div>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">
+            <img src="system-controller-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 權重調整</b>
+          </h5>
+          <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
+            學術產出 = <span id="nWeight_ResearchO-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_ResearchO" value="1">
+          </label>
+          <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
+            　師生比 = <span id="nWeight_SFRatioO-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_SFRatioO" value="1">
+          </label>
+          <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
+            國際學生 = <span id="nWeight_InterStuO-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_InterStuO" value="1">
+          </label>
+          <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
+            國際教師 = <span id="nWeight_FC-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_FC" value="1">
+          </label>
+        </div>
+        <div class="col">
+          <h5 class="card-title">
+            <img src="exchange-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 順序調整</b>
+          </h5>
+          <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
+            學術產出 = <span id="nWeight_ResearchO-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_ResearchO" value="1">
+          </label>
+          <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
+            　師生比 = <span id="nWeight_SFRatioO-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_SFRatioO" value="1">
+          </label>
+          <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
+            國際學生 = <span id="nWeight_InterStuO-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_InterStuO" value="1">
+          </label>
+          <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
+            國際教師 = <span id="nWeight_FC-value">1</span>
+            <input type="range" min="0" max="10" id="nWeight_FC" value="1">
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Create a div where the graph will take place -->
