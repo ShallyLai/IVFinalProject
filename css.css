@@ -1,8 +1,10 @@
 .container{
-    width: 80%;
+    width: 100%;
     overflow-y: auto;
  } 
  
- .m-1 {
-    margin: 20 !important;
+ 
+ .c-1 {
+    margin: 30 !important;
+    padding: 20 !important;
  }

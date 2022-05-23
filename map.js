@@ -54,17 +54,17 @@ Promise.all([
                 .style("opacity", .8);
 
             map_tooltip
-                .style("left", (d.pageX) + 'px')
+                .style("left", (d.pageX-850) + 'px')
                 .style("top", (d.pageY) + 'px')
                 .html(d.target.__data__.properties.region);
-               // console.log(d.pageX,d.pageY)
+                console.log(d.pageX-850,d.pageY)
 
         }
 
         let mapMouseMove = function (d) {
           
             map_tooltip
-                .style("left", (d.pageX) + 'px')
+                .style("left", (d.pageX-850) + 'px')
                 .style("top", (d.pageY) + 'px')
                 .html(d.target.__data__.properties.region);
                // console.log(d.pageX,d.pageY)

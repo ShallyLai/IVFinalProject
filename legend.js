@@ -53,7 +53,7 @@ legend_svg.append('text')
     .attr('y', 60)
     .attr('dy', 6)
     .style('font-size', '17px')
-    .text('師生比');	
+    .text('師生比例');	
 
 legend_svg.append('text')
     .attr('x', 30)

@@ -16,100 +16,122 @@
 
 <body>
 
-  <div class="card m-1" style="width: 550px; ">
-    <div class="card-body">
-
-      <h5 class="card-title"><img src="calendar.svg" class="img-fluid" style="width: 20px;"><b> 年份選擇 </b></h5>
-
-      <div class="form-check form-check-inline m-1 ">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2017" onclick="Year(2017);">
-        <label class="form-check-label" for="flexRadioDefault1">2017</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2018" onclick="Year(2018);">
-        <label class="form-check-label" for="flexRadioDefault1">2018</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2019" onclick="Year(2019);">
-        <label class="form-check-label" for="flexRadioDefault1">2019</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2020" onclick="Year(2020);">
-        <label class="form-check-label" for="flexRadioDefault1">2020</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2021" onclick="Year(2021);">
-        <label class="form-check-label" for="flexRadioDefault1">2021</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2022" checked
-          onclick="Year(2022);">
-        <label class="form-check-label" for="flexRadioDefault2">2022</label>
-        <br>
-      </div>
-      <hr>
-      <h5 class="card-title">
-        <img src="world.svg" class="img-fluid" style="width: 20px;"><b> 地區選擇　</b>
-        <button type="button" class="btn btn-outline-secondary btn-sm">選擇全部</button>
-      </h5>
-      <div id="myMap"></div>
-      <hr>
-      <div class="row">
-        <div class="col">
-          <h5 class="card-title">
-            <img src="system-controller-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 權重調整</b>
-          </h5>
-          <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
-            學術產出 = <span id="nWeight_ResearchO-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_ResearchO" value="1">
-          </label>
-          <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
-            　師生比 = <span id="nWeight_SFRatioO-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_SFRatioO" value="1">
-          </label>
-          <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
-            國際學生 = <span id="nWeight_InterStuO-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_InterStuO" value="1">
-          </label>
-          <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
-            國際教師 = <span id="nWeight_FC-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_FC" value="1">
-          </label>
-        </div>
-        <div class="col">
-          <h5 class="card-title">
-            <img src="exchange-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 順序調整</b>
-          </h5>
-          <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
-            學術產出 = <span id="nWeight_ResearchO-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_ResearchO" value="1">
-          </label>
-          <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
-            　師生比 = <span id="nWeight_SFRatioO-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_SFRatioO" value="1">
-          </label>
-          <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
-            國際學生 = <span id="nWeight_InterStuO-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_InterStuO" value="1">
-          </label>
-          <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
-            國際教師 = <span id="nWeight_FC-value">1</span>
-            <input type="range" min="0" max="10" id="nWeight_FC" value="1">
-          </label>
+  <div class="row">
+    <div class="col">
+      <div class="card c-1" style="width: 850px;">
+        <div id="myLegend"></div>
+        <div class="container">
+          <div id="myStackBar" style="text-align:center;"></div>
         </div>
       </div>
     </div>
+    <div class="col" style="width: 550px; ">
+      <div class="card c-1" style="width: 550px; ">
+        <div class="card-body">
+
+          <h5 class="card-title"><img src="calendar.svg" class="img-fluid" style="width:20px;"><b> 年份選擇 </b></h5>
+
+          <div class="form-check form-check-inline m-1 ">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2017" onclick="Year(2017);">
+            <label class="form-check-label" for="flexRadioDefault1">2017</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2018" onclick="Year(2018);">
+            <label class="form-check-label" for="flexRadioDefault1">2018</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2019" onclick="Year(2019);">
+            <label class="form-check-label" for="flexRadioDefault1">2019</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2020" onclick="Year(2020);">
+            <label class="form-check-label" for="flexRadioDefault1">2020</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2021" onclick="Year(2021);">
+            <label class="form-check-label" for="flexRadioDefault1">2021</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="year2022" checked
+              onclick="Year(2022);">
+            <label class="form-check-label" for="flexRadioDefault2">2022</label>
+            <br>
+          </div>
+          <hr>
+          <h5 class="card-title">
+            <img src="world.svg" class="img-fluid" style="width: 20px;"><b> 地區選擇 </b>
+            <button type="button" class="btn btn-outline-secondary  rounded-pill btn-sm">選擇全部</button>
+          </h5>
+          <div id="myMap"></div>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title">
+                <img src="system-controller-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 權重調整 </b>
+                <button type="button" class="btn btn-outline-secondary rounded-pill btn-sm">重置</button>
+              </h5>
+              <div class="d-grid gap-2">
+                <label for="nWeight_ResearchO" style="display: inline-block; width: 240px; text-align: center">
+                  學術產出
+                  <input type="range" min="0" max="10" id="nWeight_ResearchO" value="1">
+                  <span class="badge rounded-pill bg-primary" id="nWeight_ResearchO-value">1</span>
+                </label>
+                <label for="nWeight_SFRatioO" style="display: inline-block; width: 240px; text-align: center">
+                  師生比例
+                  <input type="range" min="0" max="10" id="nWeight_SFRatioO" value="1">
+                  <span class="badge rounded-pill bg-primary" id="nWeight_SFRatioO-value">1</span>
+                </label>
+                <label for="nWeight_InterStuO" style="display: inline-block; width: 240px; text-align: center">
+                  國際學生
+                  <input type="range" min="0" max="10" id="nWeight_InterStuO" value="1">
+                  <span class="badge rounded-pill bg-primary" id="nWeight_InterStuO-value">1</span>
+                </label>
+                <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
+                  國際教師
+                  <input type="range" min="0" max="10" id="nWeight_FC" value="1">
+                  <span class="badge rounded-pill bg-primary" id="nWeight_FC-value">1</span>
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <h5 class="card-title">
+                <img src="exchange-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 順序調整 </b>
+                <button type="button" class="btn btn-outline-secondary rounded-pill btn-sm" onclick="resetOrder();">重置</button>
+              </h5>
+
+              <div class="row">
+                <div class="d-grid gap-1">
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary" disabled id="order0">　學術產出　</button>
+                    <button type="button" class="btn btn-primary" id="order0_up" disabled>▲</button>
+                    <button type="button" class="btn btn-primary" id="order0_down" onclick="changeOrder(01);">▼</button>
+                  </div>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary" disabled id="order1">　師生比例　</button>
+                    <button type="button" class="btn btn-primary" id="order1_up" onclick="changeOrder(01);">▲</button>
+                    <button type="button" class="btn btn-primary" id="order1_down" onclick="changeOrder(12);">▼</button>
+                  </div>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary" disabled id="order2">　國際學生　</button>
+                    <button type="button" class="btn btn-primary" id="order2_up" onclick="changeOrder(12);">▲</button>
+                    <button type="button" class="btn btn-primary" id="order2_down" onclick="changeOrder(23);">▼</button>
+                  </div>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary" disabled id="order3">　國際教師　</button>
+                    <button type="button" class="btn btn-primary" id="order3_up" onclick="changeOrder(23);">▲</button>
+                    <button type="button" class="btn btn-primary" id="order3_down" disabled>▼</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Create a div where the graph will take place -->
+   
   </div>
 
-  <!-- Create a div where the graph will take place -->
-
-
-  <div id="myLegend"></div>
-  <center>
-    <div class="container">
-      <div id="myStackBar" style="text-align:center;"></div>
-    </div>
-  </center>
   <script src="./MergeSort.js"></script>>
   <script src="./main.js"></script>
   <script src="./map.js"></script>
