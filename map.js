@@ -1,8 +1,8 @@
 
 // The svg
 const map_margin = { top: 10, right: 10, bottom: 10, left: 10 };
-const map_width = 500 - map_margin.left - map_margin.right,
-    map_height = 300 - map_margin.top - map_margin.bottom;
+const map_width = 500 - map_margin.left - map_margin.right;
+const map_height = 300 - map_margin.top - map_margin.bottom;
 
 const map_svg = d3.select("#myMap")
     .append("svg")
@@ -29,14 +29,14 @@ const map_tooltip = d3.select("#myMap")
     .style("background-color", "black")
     .style("border-radius", "5px")
     .style("padding", "10px")
-    .style("color", "white")
+    .style("color", "white");
 
 // Load external data and boot
 Promise.all([
     d3.json("https://raw.githubusercontent.com/ShallyLai/IVFinalProject/main/Continents.json")])
     .then(function (loadData) {
 
-        let topo = loadData[0]
+        let topo = loadData[0];
 
         let mapMouseOver = function (d) {
             d3.selectAll(".Country")
@@ -57,7 +57,7 @@ Promise.all([
                 .style("left", (d.pageX-850) + 'px')
                 .style("top", (d.pageY) + 'px')
                 .html(d.target.__data__.properties.region);
-                console.log(d.pageX-850,d.pageY)
+                //console.log(d.pageX-850,d.pageY)
 
         }
 
@@ -75,15 +75,15 @@ Promise.all([
             d3.selectAll(".Country")
                 .transition()
                 .duration(100)
-                .style("opacity", 1)
+                .style("opacity", 1);
             d3.select(this)
                 .transition()
-                .duration(200)
+                .duration(200);
 
             map_tooltip
                 .transition()
                 .duration(200)
-                .style("opacity", 0)
+                .style("opacity", 0);
 
         }
 
@@ -108,22 +108,22 @@ Promise.all([
                 // console.log(d.properties.region);
                 switch (d.properties.region) {
                     case "Asia":
-                        return ContinentsColor[0]
+                        return ContinentsColor[0];
                         break;
                     case "Latin America":
-                        return ContinentsColor[1]
+                        return ContinentsColor[1];
                         break;
                     case "Africa":
-                        return ContinentsColor[2]
+                        return ContinentsColor[2];
                         break;
                     case "Oceania":
-                        return ContinentsColor[3]
+                        return ContinentsColor[3];
                         break;
                     case "North America":
-                        return ContinentsColor[4]
+                        return ContinentsColor[4];
                         break;
                     case "Europe":
-                        return ContinentsColor[5]
+                        return ContinentsColor[5];
                         break;
                 }
             })

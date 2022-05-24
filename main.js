@@ -15,16 +15,16 @@ const svg = d3.select("#myStackBar")
 // Add X axis
 const x = d3.scaleBand()
   .range([0, width])
-  .padding([0.2])
-const X_axis = svg.append("g")
+  .padding([0.2]);
+const X_axis = svg.append("g");
 
 // Add Y axis
 const y = d3.scaleLinear()
   .range([height, 0]);
-const Y_axis = svg.append("g")
+const Y_axis = svg.append("g");
 
 // Add data into a container
-const container = svg.append("g")
+const container = svg.append("g");
 
 // Create tooltip
 const tooltip = d3.select("#myStackBar")
@@ -72,7 +72,6 @@ function update(nWeight, name, clonedThisYear) {
     d3.select("#nWeight_ResearchO-value").text(nWeight);
     d3.select("#nWeight_ResearchO").property("value", nWeight);
     Research_weight = nWeight;
-    //container.selectAll("g").selectAll("myRect").attr("height",nWeight)
   } else if (name == "SFRatio") {
     d3.select("#nWeight_SFRatioO-value").text(nWeight);
     d3.select("#nWeight_SFRatioO").property("value", nWeight);
@@ -156,7 +155,8 @@ function draw(clonedThisYear) {
     .attr("y", d => y(d[1]))
     .attr("height", d => y(d[0]) - y(d[1]))
     .attr("width", x.bandwidth())
-    .attr("stroke", "white")
+    .attr("stroke", "white");
+  
   container
     .on("mouseover", function (d) {
       //const subGroupName = d3.select(this.parentNode).datum().key
@@ -185,7 +185,9 @@ function draw(clonedThisYear) {
 
 // Filter region we want
 function FilterRegion(EnterRegion) {
-  if (EnterRegion == "All") {
+  // console.log(EnterRegion);
+  // console.log(typeof(EnterRegion));
+  if(EnterRegion == "All") {  
     SetRegion = false;
     Year(enter_Year);
   }
@@ -306,13 +308,13 @@ function changeOrder(number) {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  console.log(order);
+  //console.log(order);
 
 }
 
 function resetOrder() {
   
-  order[0]="學術產出";
+  order[0] = "學術產出";
   order[1] = "師生比例";
   order[2] = "國際學生";
   order[3] = "國際教師";
@@ -321,6 +323,6 @@ function resetOrder() {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  console.log(order);
+  //console.log(order);
 
 }
