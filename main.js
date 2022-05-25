@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 20, left: 50 };
-const width = 6000 - margin.left - margin.right;
+const width = 12700 - margin.left - margin.right;
 //const height = 500 - margin.top - margin.bottom;
 const height = 415 - margin.top - margin.bottom;
 
@@ -107,6 +107,7 @@ function draw(clonedThisYear) {
 
   // Value of the first column called group
   //const groups = clonedThisYear.slice(0, 50).map(d => d.University)
+  console.log(clonedThisYear.length*25)
   const groups = clonedThisYear.map(d => d.University)
   let x = d3.scaleBand()
      .range([0, clonedThisYear.length*25])
