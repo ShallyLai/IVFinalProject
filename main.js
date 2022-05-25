@@ -1,7 +1,8 @@
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 20, left: 50 };
 const width = 6000 - margin.left - margin.right;
-const height = 500 - margin.top - margin.bottom;
+//const height = 500 - margin.top - margin.bottom;
+const height = 415 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 const svg = d3.select("#myStackBar")
@@ -20,7 +21,7 @@ const X_axis = svg.append("g");
 
 // Add Y axis
 const y = d3.scaleLinear()
-  .range([height, 0]);
+  .range([height-50, 0]);
 const Y_axis = svg.append("g");
 
 // Add data into a container
@@ -100,7 +101,6 @@ function update(nWeight, name, clonedThisYear) {
 
 function draw(clonedThisYear) {
   clonedThisYear = MergeSort(clonedThisYear);
-  console.log(clonedThisYear.length)
   // List of subgroups is the header of ThisYear array  
   const subgroups = Object.keys(clonedThisYear[0]).slice(1);
   //console.log(subgroups)
@@ -109,10 +109,10 @@ function draw(clonedThisYear) {
   //const groups = clonedThisYear.slice(0, 50).map(d => d.University)
   const groups = clonedThisYear.map(d => d.University)
   let x = d3.scaleBand()
-     .range([0, clonedThisYear.length*35])
+     .range([0, clonedThisYear.length*25])
      .padding([0.2]);
   x.domain(groups)
-  X_axis.attr("transform", `translate(0, ${height})`)
+  X_axis.attr("transform", `translate(0, ${height-50})`)
     .call(d3.axisBottom(x).tickSizeOuter(0))
     .selectAll("text")
     .style("text-anchor", "end")
@@ -136,7 +136,6 @@ function draw(clonedThisYear) {
   //console.log(ThisYear)
   //console.log(stackedData)
 
-  console.log(x.bandwidth())
   // Show the bars
   // Highlight a specific subgroup when hovered        
   container

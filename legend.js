@@ -1,9 +1,9 @@
 
 const legend_svg = d3.select("#myLegend")
     .append("svg")
-    .attr("width", 250)
-    .attr("height", 100)
-    .attr("transform", "translate(700,40)");
+    .attr("width", 600)
+    .attr("height", 50)
+    .attr("transform", "translate(300,40)");
 
 legend_svg
     .append('circle')
@@ -14,22 +14,22 @@ legend_svg
 
 legend_svg
     .append('circle')
-    .attr('cx', 10)
-    .attr('cy', 35)
+    .attr('cx', 130)
+    .attr('cy', 10)
     .attr('r', 8)
     .style("fill","#48cae4");
 
 legend_svg
     .append('circle')
-    .attr('cx', 10)
-    .attr('cy', 60)
+    .attr('cx', 250)
+    .attr('cy', 10)
     .attr('r', 8)
     .style("fill","#0096c7");
 
 legend_svg
     .append('circle')
-    .attr('cx', 10)
-    .attr('cy', 85)
+    .attr('cx', 370)
+    .attr('cy', 10)
     .attr('r', 8)
     .style("fill","#023e8a");
 
@@ -42,22 +42,22 @@ legend_svg.append('text')
     .text('國際教師');	
 
 legend_svg.append('text')
-    .attr('x', 30)
-    .attr('y', 35)
+    .attr('x', 150)
+    .attr('y', 10)
     .attr('dy', 6)
     .style('font-size', '17px')
     .text('國際學生');	
 
 legend_svg.append('text')
-    .attr('x', 30)
-    .attr('y', 60)
+    .attr('x', 270)
+    .attr('y', 10)
     .attr('dy', 6)
     .style('font-size', '17px')
     .text('師生比例');	
 
 legend_svg.append('text')
-    .attr('x', 30)
-    .attr('y', 85)
+    .attr('x', 390)
+    .attr('y', 10)
     .attr('dy', 6)
     .style('font-size', '17px')
     .text('學術產出');	
