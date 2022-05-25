@@ -52,7 +52,6 @@ Promise.all([
                 .transition()
                 .duration(200)
                 .style("opacity", .8);
-
             map_tooltip
                 .style("left", (d.pageX-850) + 'px')
                 .style("top", (d.pageY) + 'px')

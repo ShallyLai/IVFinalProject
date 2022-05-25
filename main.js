@@ -174,7 +174,7 @@ function draw(clonedThisYear) {
       //return x(d.data.University)
     })
     .attr("y", d => y(d[1]))
-    .attr("class", d=>d.data.University.replace(/[^a-zA-Z]/g, '-'))
+    .attr("class", d => d.data.University.replace(/[^a-zA-Z]/g, '-'))
     .attr("height", d => y(d[0]) - y(d[1]))
     .attr("width", x.bandwidth())
     .attr("stroke", "white");
@@ -184,7 +184,10 @@ function draw(clonedThisYear) {
       d3.selectAll("rect")
         .style("opacity", 0.2)
       // d3.selectAll(".myRect").style("opacity", 0.2)
-      d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-')).style("opacity",1)
+      d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-'))
+        .style("opacity", 1)
+        .transition()
+        .duration(200)
       // console.log(d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-')).style("opacity"))
 
       tooltip
@@ -192,8 +195,8 @@ function draw(clonedThisYear) {
         .duration(200)
         .style("opacity", 1);
       tooltip
-        .style("left", event.pageX + "px")
-        .style("top", event.pageY - 150 + "px")
+        .style("left", event.pageX + 50 + "px")
+        .style("top", event.pageY - 180 + "px")
         .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>學術產出：" + RSOutput(ResOpt.get(d.toElement.__data__.data.University)) + "<br>師生比例：1:" + SFRatio.get(d.toElement.__data__.data.University) + "<br>國際學生：" + IntStu.get(d.toElement.__data__.data.University) + " 人<br>國際教師：" + FC.get(d.toElement.__data__.data.University) + " 人");
       // console.log(d);
     })
@@ -202,7 +205,7 @@ function draw(clonedThisYear) {
       //   .style("opacity", 0.4)
       //console.log(d)
       d3.selectAll("rect")
-        .style("opacity", 0.9)
+        .style("opacity", 1)
       tooltip.style("opacity", 0);
     })
     .on("mouseout", function (d) {
