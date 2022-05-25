@@ -106,9 +106,18 @@ function draw(clonedThisYear) {
   //console.log(subgroups)
 
   // Value of the first column called group
-  //const groups = clonedThisYear.slice(0, 50).map(d => d.University)
-  //console.log(clonedThisYear.length*25)
-  const groups = clonedThisYear.map(d => d.University)
+  //const groups = clonedThisYear.map(d => d.University)
+ 
+  const groups = clonedThisYear.map(d => {
+    let regex = /\(.*\)/;
+    let ans = regex.exec(d.University) 
+    if(ans !== null){
+      //console.log(ans[0].slice(1,ans[0].length-1))
+      return (ans[0].slice(1,ans[0].length-1))
+    }
+    else return d.University
+  })
+  
   let x = d3.scaleBand()
      .range([0, clonedThisYear.length*25])
      .padding([0.2]);
@@ -155,7 +164,14 @@ function draw(clonedThisYear) {
     .attr("x", function (d) {
       //console.log(d)
       //console.log(d.data.University.replace(/\s/g, '-'))
-      return x(d.data.University)
+      let regex = /\(.*\)/;
+      let ans = regex.exec(d.data.University) 
+      if(ans !== null){
+        //console.log(ans[0].slice(1,ans[0].length-1))
+        return x(ans[0].slice(1,ans[0].length-1))
+      }
+      else return x(d.data.University)
+      //return x(d.data.University)
     })
     .attr("y", d => y(d[1]))
     .attr("class", d=>d.data.University.replace(/[^a-zA-Z]/g, '-'))
