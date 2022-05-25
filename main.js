@@ -13,9 +13,9 @@ const svg = d3.select("#myStackBar")
 
 
 // Add X axis
-const x = d3.scaleBand()
-  .range([0, width])
-  .padding([0.2]);
+// const x = d3.scaleBand()
+//   .range([0, width])
+//   .padding([0.2]);
 const X_axis = svg.append("g");
 
 // Add Y axis
@@ -100,6 +100,7 @@ function update(nWeight, name, clonedThisYear) {
 
 function draw(clonedThisYear) {
   clonedThisYear = MergeSort(clonedThisYear);
+  console.log(clonedThisYear.length)
   // List of subgroups is the header of ThisYear array  
   const subgroups = Object.keys(clonedThisYear[0]).slice(1);
   //console.log(subgroups)
@@ -107,7 +108,9 @@ function draw(clonedThisYear) {
   // Value of the first column called group
   //const groups = clonedThisYear.slice(0, 50).map(d => d.University)
   const groups = clonedThisYear.map(d => d.University)
-
+  let x = d3.scaleBand()
+     .range([0, clonedThisYear.length*35])
+     .padding([0.2]);
   x.domain(groups)
   X_axis.attr("transform", `translate(0, ${height})`)
     .call(d3.axisBottom(x).tickSizeOuter(0))
@@ -133,7 +136,7 @@ function draw(clonedThisYear) {
   //console.log(ThisYear)
   //console.log(stackedData)
 
-
+  console.log(x.bandwidth())
   // Show the bars
   // Highlight a specific subgroup when hovered        
   container
