@@ -107,7 +107,7 @@ function draw(clonedThisYear) {
 
   // Value of the first column called group
   //const groups = clonedThisYear.slice(0, 50).map(d => d.University)
-  console.log(clonedThisYear.length*25)
+  //console.log(clonedThisYear.length*25)
   const groups = clonedThisYear.map(d => d.University)
   let x = d3.scaleBand()
      .range([0, clonedThisYear.length*25])
@@ -153,19 +153,24 @@ function draw(clonedThisYear) {
     .transition()
     .duration(200)
     .attr("x", function (d) {
+      //console.log(d)
+      //console.log(d.data.University.replace(/\s/g, '-'))
       return x(d.data.University)
     })
     .attr("y", d => y(d[1]))
+    .attr("class", d=>d.data.University.replace(/[^a-zA-Z]/g, '-'))
     .attr("height", d => y(d[0]) - y(d[1]))
     .attr("width", x.bandwidth())
     .attr("stroke", "white");
   
   container
     .on("mouseover", function (d) {
-      //const subGroupName = d3.select(this.parentNode).datum().key
-      //d3.selectAll(".myRect").style("opacity", 0.2)
-      //d3.selectAll("."+subGroupName).style("opacity",1)
-      //console.log(subGroupName);
+      d3.selectAll("rect")
+        .style("opacity", 0.2)
+      // d3.selectAll(".myRect").style("opacity", 0.2)
+      d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-')).style("opacity",1)
+      // console.log(d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-')).style("opacity"))
+
       tooltip
         .transition()
         .duration(200)
@@ -177,8 +182,11 @@ function draw(clonedThisYear) {
       // console.log(d);
     })
     .on("mouseleave", function (d) { // When user do not hover anymore
-      d3.selectAll(".myRect")
-        .style("opacity", 1)
+      // d3.selectAll(".myRect")
+      //   .style("opacity", 0.4)
+      //console.log(d)
+      d3.selectAll("rect")
+        .style("opacity", 0.9)
       tooltip.style("opacity", 0);
     })
     .on("mouseout", function (d) {
