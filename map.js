@@ -54,7 +54,7 @@ Promise.all([
                 .style("opacity", .8);
             map_tooltip
                 .style("left", (d.pageX-850) + 'px')
-                .style("top", (d.pageY) + 'px')
+                .style("top", (d.page-100) + 'px')
                 .html(d.target.__data__.properties.region);
                 //console.log(d.pageX-850,d.pageY)
 
@@ -64,7 +64,7 @@ Promise.all([
           
             map_tooltip
                 .style("left", (d.pageX-850) + 'px')
-                .style("top", (d.pageY) + 'px')
+                .style("top", (d.pageY-100) + 'px')
                 .html(d.target.__data__.properties.region);
                // console.log(d.pageX,d.pageY)
 

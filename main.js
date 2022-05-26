@@ -4,6 +4,8 @@ const width = 12700 - margin.left - margin.right;
 //const height = 500 - margin.top - margin.bottom;
 const height = 415 - margin.top - margin.bottom;
 
+const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"]
+
 // append the svg object to the body of the page
 const svg = d3.select("#myStackBar")
   .append("svg")
@@ -137,7 +139,9 @@ function draw(clonedThisYear) {
   // const color = d3.scaleOrdinal()
   //  .domain(subgroups)
   //  .range(d3.schemeSet2);
-  const color = ["#023e8a", "#0096c7", "#48cae4", "#ade8f4"]
+  //const color = ["#023e8a", "#0096c7", "#48cae4", "#ade8f4"]
+
+ 
 
   //stack the data? --> stack per subgroup
   const stackedData = d3.stack()
@@ -298,6 +302,13 @@ Year(2022);
 function changeOrder(number) {
 
   switch (number) {
+    case 0:
+      order[0] = "學術產出";
+      order[1] = "師生比例";
+      order[2] = "國際學生";
+      order[3] = "國際教師";
+      break;
+    
     case 1:
       var tmp = order[0];
       order[0] = order[1];
@@ -321,10 +332,10 @@ function changeOrder(number) {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  //console.log(order);
+  console.log(order);
 
 }
-
+/*
 function resetOrder() {
   
   order[0] = "學術產出";
@@ -336,9 +347,10 @@ function resetOrder() {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  //console.log(order);
+  console.log(order);
 
 }
+*/
 
 function resetWeight() {
   

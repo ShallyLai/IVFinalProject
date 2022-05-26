@@ -10,28 +10,28 @@ legend_svg
     .attr('cx', 10)
     .attr('cy', 10)
     .attr('r', 8)
-    .style("fill","#ade8f4");
+    .style("fill",color[3]);
 
 legend_svg
     .append('circle')
     .attr('cx', 130)
     .attr('cy', 10)
     .attr('r', 8)
-    .style("fill","#48cae4");
+    .style("fill",color[2]);
 
 legend_svg
     .append('circle')
     .attr('cx', 250)
     .attr('cy', 10)
     .attr('r', 8)
-    .style("fill","#0096c7");
+    .style("fill",color[1]);
 
 legend_svg
     .append('circle')
     .attr('cx', 370)
     .attr('cy', 10)
     .attr('r', 8)
-    .style("fill","#023e8a");
+    .style("fill",color[0]);
 
 //文字	
 legend_svg.append('text')
