@@ -90,6 +90,11 @@ function update(nWeight, name, clonedThisYear) {
   }
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
 
+  draw(clonedThisYear);
+}
+
+function draw(clonedThisYear) {
+  
   // multiply weight
   for (var i in clonedThisYear) {
     clonedThisYear[i].ResearchOutput *= Research_weight;
@@ -98,10 +103,6 @@ function update(nWeight, name, clonedThisYear) {
     clonedThisYear[i].FC *= FC_weight;
   }
 
-  draw(clonedThisYear);
-}
-
-function draw(clonedThisYear) {
   clonedThisYear = MergeSort(clonedThisYear);
   // List of subgroups is the header of ThisYear array  
   const subgroups = Object.keys(clonedThisYear[0]).slice(1);
@@ -354,21 +355,21 @@ function resetOrder() {
 
 function resetWeight() {
   
-  d3.select("#nWeight_ResearchO-value").text(1);
-  d3.select("#nWeight_ResearchO").property("value", 1);
-  d3.select("#nWeight_SFRatioO-value").text(1);
-  d3.select("#nWeight_SFRatioO").property("value", 1);
-  d3.select("#nWeight_InterStuO-value").text(1);
-  d3.select("#nWeight_InterStuO").property("value", 1);
-  d3.select("#nWeight_FC-value").text(1);
-  d3.select("#nWeight_FC").property("value", 1);
+  d3.select("#nWeight_ResearchO-value").text(5);
+  d3.select("#nWeight_ResearchO").property("value", 5);
+  d3.select("#nWeight_SFRatioO-value").text(5);
+  d3.select("#nWeight_SFRatioO").property("value", 5);
+  d3.select("#nWeight_InterStuO-value").text(5);
+  d3.select("#nWeight_InterStuO").property("value", 5);
+  d3.select("#nWeight_FC-value").text(5);
+  d3.select("#nWeight_FC").property("value", 5);
 
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
   //console.log(clonedThisYear);
-  Research_weight = 1;
-  SFRatio_weight = 1;
-  InterStu_weight = 1;
-  FC_weight = 1;
+  Research_weight = 5;
+  SFRatio_weight = 5;
+  InterStu_weight = 5;
+  FC_weight = 5;
 
   draw(clonedThisYear);
 
