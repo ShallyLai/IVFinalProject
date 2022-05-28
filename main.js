@@ -1,7 +1,6 @@
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 20, left: 50 };
 const width = 12700 - margin.left - margin.right;
-//const height = 500 - margin.top - margin.bottom;
 const height = 415 - margin.top - margin.bottom;
 
 const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"]
@@ -23,11 +22,14 @@ const X_axis = svg.append("g");
 
 // Add Y axis
 const y = d3.scaleLinear()
-  .range([height-50, 0]);
+  .range([height - 50, 0]);
 const Y_axis = svg.append("g");
 
 // Add data into a container
 const container = svg.append("g");
+
+// Add rank text 
+// const rankText = svg.selectAll("text.rect");
 
 // Create tooltip
 const tooltip = d3.select("#myStackBar")
@@ -109,23 +111,23 @@ function draw(clonedThisYear) {
   //console.log(subgroups)
 
   // Value of the first column called group
-  //const groups = clonedThisYear.map(d => d.University)
- 
-  const groups = clonedThisYear.map(d => {
-    let regex = /\(.*\)/;
-    let ans = regex.exec(d.University) 
-    if(ans !== null){
-      //console.log(ans[0].slice(1,ans[0].length-1))
-      return (ans[0].slice(1,ans[0].length-1))
-    }
-    else return d.University
-  })
+  const groups = clonedThisYear.map(d => d.University)
+  // const groups = clonedThisYear.map(d => {
+  //   let regex = /\(.*\)/;
+  //   let ans = regex.exec(d.University);
+  //   if(ans !== null){
+  //     //console.log(ans[0].slice(1,ans[0].length-1));
+  //     return (ans[0].slice(1, ans[0].length - 1));
+  //   }
+  //   else 
+  //     return d.University;
+  // })
   
   let x = d3.scaleBand()
-     .range([0, clonedThisYear.length*25])
-     .padding([0.2]);
-  x.domain(groups)
-  X_axis.attr("transform", `translate(0, ${height-50})`)
+    .range([0, clonedThisYear.length * 25])
+    .padding([0.2]);
+  x.domain(groups);
+  X_axis.attr("transform", `translate(0, ${height - 50})`)
     .call(d3.axisBottom(x).tickSizeOuter(0))
     .selectAll("text")
     .style("text-anchor", "end")
@@ -143,13 +145,12 @@ function draw(clonedThisYear) {
   //const color = ["#023e8a", "#0096c7", "#48cae4", "#ade8f4"]
 
  
-
   //stack the data? --> stack per subgroup
   const stackedData = d3.stack()
     .keys(subgroups)
     (clonedThisYear);
-  //console.log(ThisYear)
-  //console.log(stackedData)
+  // console.log(ThisYear);
+  // console.log(stackedData);
 
   // Show the bars
   // Highlight a specific subgroup when hovered        
@@ -166,19 +167,20 @@ function draw(clonedThisYear) {
     .join("rect")
     .transition()
     .duration(200)
-    .attr("x", function (d) {
-      //console.log(d)
-      //console.log(d.data.University.replace(/\s/g, '-'))
-      let regex = /\(.*\)/;
-      let ans = regex.exec(d.data.University) 
-      if(ans !== null){
-        //console.log(ans[0].slice(1,ans[0].length-1))
-        return x(ans[0].slice(1,ans[0].length-1))
-      }
-      else return x(d.data.University)
-      //return x(d.data.University)
-    })
-    .attr("y", d => y(d[1]))
+    // .attr("x", function (d) {
+    //   //console.log(d)
+    //   //console.log(d.data.University.replace(/\s/g, '-'))
+    //   let regex = /\(.*\)/;
+    //   let ans = regex.exec(d.data.University);
+    //   if(ans !== null){
+    //     //console.log(ans[0].slice(1,ans[0].length-1))
+    //     return x(ans[0].slice(1, ans[0].length - 1))
+    //   }
+    //   else 
+    //     return x(d.data.University);
+    // })
+    .attr("x", d => x(d.data.University))
+    .attr("y", d => y(d[1]) - 0.8)
     .attr("class", d => d.data.University.replace(/[^a-zA-Z]/g, '-'))
     .attr("height", d => y(d[0]) - y(d[1]))
     .attr("width", x.bandwidth())
@@ -188,7 +190,6 @@ function draw(clonedThisYear) {
     .on("mouseover", function (d) {
       d3.selectAll("rect")
         .style("opacity", 0.2)
-      // d3.selectAll(".myRect").style("opacity", 0.2)
       d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-'))
         .style("opacity", 1)
         .transition()
@@ -206,16 +207,44 @@ function draw(clonedThisYear) {
       // console.log(d);
     })
     .on("mouseleave", function (d) { // When user do not hover anymore
-      // d3.selectAll(".myRect")
-      //   .style("opacity", 0.4)
-      //console.log(d)
       d3.selectAll("rect")
         .style("opacity", 1)
-      tooltip.style("opacity", 0);
+      tooltip
+        .transition()
+        .duration(200)
+        .style("opacity", 0);
     })
     .on("mouseout", function (d) {
       tooltip.style("opacity", 0);
     });
+
+  // Show rank on top of stacked bar chart
+  const rankText = svg.selectAll("text.rect").data(clonedThisYear);
+  // console.log(clonedThisYear);
+
+  rankText
+    .enter()
+    .insert("text")
+    .attr("class", "rect")
+    .attr("text-anchor", "middle")
+    .attr("x", function (d) { 
+      // console.log(d);
+      return x(d.University) + x.bandwidth() / 2; 
+    })
+    .attr("y", function (d) { 
+      // console.log(d); 
+      // return y(d.SFRatio + d.ResearchOutput + d.InterStu + d.FC) - 5; 
+      return y(50);
+    })
+    .style("fill", "rgb(0, 0, 0)")
+    .style("font-family", "Georgia")
+    .style("font-size","10px")
+    .text(function(d, i){ 
+      // console.log(i);
+      return (i + 1);
+    });
+
+  rankText.exit().remove();
 }
 
 // Filter region we want
@@ -248,8 +277,8 @@ var NowYear;
 var SetRegion = false;
 var Region;
 var enter_Year;
-
 var order = ["學術產出", "師生比例", "國際學生", "國際教師"];
+
 
 // Parse the Data
 function Year(EnterYear) {
@@ -333,7 +362,7 @@ function changeOrder(number) {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  console.log(order);
+  // console.log(order);
 
 }
 /*
