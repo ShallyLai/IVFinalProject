@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Merge sort for every university 
 function MergeSort(array){
   if (array.length <= 1){
@@ -32,7 +31,7 @@ function Merge(left, right){
   }
   return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
-=======
+
 // Merge sort for every university 
 function MergeSort(array){
   if (array.length <= 1){
@@ -66,4 +65,3 @@ function Merge(left, right){
   }
   return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
->>>>>>> d3741c0520c21784a4c1f3eeeca5dc050c81377d
