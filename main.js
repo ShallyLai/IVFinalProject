@@ -158,6 +158,7 @@ function draw(clonedThisYear) {
   var colorRecord = []; 
   var val = 0;    
   
+<<<<<<< HEAD
   container
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group
@@ -411,16 +412,29 @@ function changeOrder(number) {
       order[3] = tmp;
       break;
   }
+=======
+  order[0] = "學術產出";
+  order[1] = "師生比例";
+  order[2] = "國際學生";
+  order[3] = "國際教師";
+>>>>>>> 7d94a2f545ad65405772ba518c4fbe88cf289a1b
 
   d3.select("#order0").text("　" + order[0] + "　");
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
+<<<<<<< HEAD
   // console.log(order);
   orderData();
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
   draw(clonedThisYear);
 }
+=======
+  console.log(order);
+
+}
+*/
+>>>>>>> 7d94a2f545ad65405772ba518c4fbe88cf289a1b
 
 function resetWeight() {
   
