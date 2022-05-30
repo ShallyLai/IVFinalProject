@@ -3,7 +3,7 @@ const margin = { top: 10, right: 30, bottom: 20, left: 50 };
 const width = 12700 - margin.left - margin.right;
 const height = 415 - margin.top - margin.bottom;
 
-const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"]
+const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"];
 
 // append the svg object to the body of the page
 const svg = d3.select("#myStackBar")
@@ -108,7 +108,7 @@ function draw(clonedThisYear) {
   clonedThisYear = MergeSort(clonedThisYear);
   // List of subgroups is the header of ThisYear array  
   const subgroups = Object.keys(clonedThisYear[0]).slice(1);
-  //console.log(subgroups)
+  //console.log(subgroups);
 
   // Value of the first column called group
   const groups = clonedThisYear.map(d => d.University)
@@ -152,37 +152,36 @@ function draw(clonedThisYear) {
   // console.log(ThisYear);
   // console.log(stackedData);
 
-  // Show the bars
-  // Highlight a specific subgroup when hovered        
+  // Show the bars, highlight a specific subgroup when hovered        
   var colorPen = color[0]; 
   var colorRecord = []; 
   var val = 0;    
   
-<<<<<<< HEAD
   container
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group
     .data(stackedData)
     .join("g")
     .attr("fill", function(d, i){
-        val = (d[i][1]-d[i][0]).toFixed(2); //round up @5 round down @4
-        // console.log((d[i][1]-d[i][0]).toFixed(2));
-        // console.log((d[i].data.SFRatio).toFixed(2));
-      
-        if(val == (d[i].data.ResearchOutput).toFixed(2) && colorRecord.indexOf(color[0]) == -1){
-            colorPen = color[0];
-        }else if(val == (d[i].data.SFRatio).toFixed(2) && colorRecord.indexOf(color[1]) == -1){
-          colorPen = color[1];
-        }else if(val == (d[i].data.InterStu).toFixed(2) && colorRecord.indexOf(color[2]) == -1){
-          colorPen = color[2];
-        }else if(val == (d[i].data.FCount).toFixed(2) && colorRecord.indexOf(color[3]) == -1){
-          colorPen = color[3];
-        }
-        colorRecord[colorRecord.length] = colorPen;
-        if(colorRecord.length == 4){
-          colorRecord = [];
-        }
-        return colorPen})
+      val = (d[i][1] - d[i][0]).toFixed(2); //round up @5 round down @4
+      // console.log((d[i][1]-d[i][0]).toFixed(2));
+      // console.log((d[i].data.SFRatio).toFixed(2));
+    
+      if(val == (d[i].data.ResearchOutput).toFixed(2) && colorRecord.indexOf(color[0]) == -1){
+        colorPen = color[0];
+      }else if(val == (d[i].data.SFRatio).toFixed(2) && colorRecord.indexOf(color[1]) == -1){
+        colorPen = color[1];
+      }else if(val == (d[i].data.InterStu).toFixed(2) && colorRecord.indexOf(color[2]) == -1){
+        colorPen = color[2];
+      }else if(val == (d[i].data.FCount).toFixed(2) && colorRecord.indexOf(color[3]) == -1){
+        colorPen = color[3];
+      }
+      colorRecord[colorRecord.length] = colorPen;
+      if(colorRecord.length == 4){
+        colorRecord = [];
+      }
+      return colorPen;
+    })
     .attr("class", d => "myRect " + d.key) // Add a class to each subgroup: their name
     .selectAll("rect")
     // enter a second time = loop subgroup per subgroup to add all rectangles
@@ -321,6 +320,7 @@ function orderObj(row){
   let InterStu_obj = {InterStu: row.IntStu_Nor * 100};
   let FC_obj =  {FCount: row.FC_Nor * 100}; 
   topush = {University: row.university};
+  
   for(var i = 0; i < order.length; i++){
     
     if(order[i] == '學術產出'){
@@ -332,8 +332,7 @@ function orderObj(row){
     }else if(order[i] == '國際教師'){
       Object.assign(topush, FC_obj);
     }
-  }
-  
+  } 
   //console.log(topush)
 }
 
@@ -353,7 +352,6 @@ var SetRegion = false;
 var Region;
 var enter_Year;
 var order = ["學術產出", "師生比例", "國際學生", "國際教師"];
-
 var topush = {};
 var data;
 
@@ -412,29 +410,18 @@ function changeOrder(number) {
       order[3] = tmp;
       break;
   }
-=======
-  order[0] = "學術產出";
-  order[1] = "師生比例";
-  order[2] = "國際學生";
-  order[3] = "國際教師";
->>>>>>> 7d94a2f545ad65405772ba518c4fbe88cf289a1b
 
   d3.select("#order0").text("　" + order[0] + "　");
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-<<<<<<< HEAD
   // console.log(order);
+  
   orderData();
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
   draw(clonedThisYear);
-}
-=======
-  console.log(order);
 
 }
-*/
->>>>>>> 7d94a2f545ad65405772ba518c4fbe88cf289a1b
 
 function resetWeight() {
   
