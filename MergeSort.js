@@ -14,8 +14,8 @@ function Merge(left, right){
   let rightIndex = 0;
   while(leftIndex < left.length && rightIndex < right.length){
     // console.log("Hi Merge");
-    let leftValue = Number(left[leftIndex].ResearchOutput) + left[leftIndex].SFRatio + left[leftIndex].InterStu + left[leftIndex].FC;
-    let rightValue = Number(right[rightIndex].ResearchOutput) + right[rightIndex].SFRatio + right[rightIndex].InterStu + right[rightIndex].FC;
+    let leftValue = Number(left[leftIndex].ResearchOutput) + left[leftIndex].SFRatio + left[leftIndex].InterStu + left[leftIndex].FCount;
+    let rightValue = Number(right[rightIndex].ResearchOutput) + right[rightIndex].SFRatio + right[rightIndex].InterStu + right[rightIndex].FCount;
     if(leftValue > rightValue){
       result.push(left[leftIndex]);
       leftIndex++;

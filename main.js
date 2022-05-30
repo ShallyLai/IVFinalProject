@@ -102,7 +102,7 @@ function draw(clonedThisYear) {
     clonedThisYear[i].ResearchOutput *= Research_weight;
     clonedThisYear[i].SFRatio *= SFRatio_weight;
     clonedThisYear[i].InterStu *= InterStu_weight;
-    clonedThisYear[i].FC *= FC_weight;
+    clonedThisYear[i].FCount *= FC_weight;
   }
 
   clonedThisYear = MergeSort(clonedThisYear);
@@ -154,12 +154,33 @@ function draw(clonedThisYear) {
 
   // Show the bars
   // Highlight a specific subgroup when hovered        
+  var colorPen = color[0]; 
+  var colorRecord = []; 
+  var val = 0;    
   container
     .selectAll("g")
     // Enter in the stack data = loop key per key = group per group
     .data(stackedData)
     .join("g")
-    .attr("fill", (d, i) => color[i])
+    .attr("fill", function(d, i){
+        val = (d[i][1]-d[i][0]).toFixed(2); //round up @5 round down @4
+        // console.log((d[i][1]-d[i][0]).toFixed(2));
+        // console.log((d[i].data.SFRatio).toFixed(2));
+      
+        if(val == (d[i].data.ResearchOutput).toFixed(2) && colorRecord.indexOf(color[0]) == -1){
+            colorPen = color[0];
+        }else if(val == (d[i].data.SFRatio).toFixed(2) && colorRecord.indexOf(color[1]) == -1){
+          colorPen = color[1];
+        }else if(val == (d[i].data.InterStu).toFixed(2) && colorRecord.indexOf(color[2]) == -1){
+          colorPen = color[2];
+        }else if(val == (d[i].data.FCount).toFixed(2) && colorRecord.indexOf(color[3]) == -1){
+          colorPen = color[3];
+        }
+        colorRecord[colorRecord.length] = colorPen;
+        if(colorRecord.length == 4){
+          colorRecord = [];
+        }
+        return colorPen})
     .attr("class", d => "myRect " + d.key) // Add a class to each subgroup: their name
     .selectAll("rect")
     // enter a second time = loop subgroup per subgroup to add all rectangles
@@ -261,7 +282,57 @@ function FilterRegion(EnterRegion) {
     Year(enter_Year);
   }
 }
+// reorder whole data
+function orderData(){
+  // reset 'ThisYear'
+  ThisYear = []
+  // Seperate data with year
+  data.forEach(function (row) { 
+    orderObj(row);
+    if (SetRegion == false) {
+      if (row.year == NowYear) {
+        ThisYear.push(topush);
+        ResOpt.set(row.university, row.research_output);
+        SFRatio.set(row.university, row.student_faculty_ratio);
+        IntStu.set(row.university, row.international_students);
+        FC.set(row.university, row.faculty_count);
+      }
+    }else if (SetRegion == true) {
+      if (row.year == NowYear && row.region == Region) {
+        //topush = { University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu: row.IntStu_Nor * 100, FC: row.FC_Nor * 100 };
+        ThisYear.push(topush);
+        ResOpt.set(row.university, row.research_output);
+        SFRatio.set(row.university, row.student_faculty_ratio);
+        IntStu.set(row.university, row.international_students);
+        FC.set(row.university, row.faculty_count);
+      }
+    }
+  });
+  //console.log(ThisYear);
+}
 
+// order 'topush' obj
+function orderObj(row){
+  let ResearchOutput_obj = {ResearchOutput: row.research_output};
+  let SFRatio_obj = {SFRatio: row.SFRatio_Nor * 100};
+  let InterStu_obj = {InterStu: row.IntStu_Nor * 100};
+  let FC_obj =  { FCount: row.FC_Nor * 100}; 
+  topush = { University: row.university};
+  for(var i = 0; i<order.length; i++){
+    
+    if(order[i] == '學術產出'){
+      Object.assign(topush, ResearchOutput_obj);
+    }else if(order[i] == '師生比例'){
+      Object.assign(topush, SFRatio_obj);
+    }else if(order[i] == '國際學生'){
+      Object.assign(topush, InterStu_obj);
+    }else if(order[i] == '國際教師'){
+      Object.assign(topush, FC_obj);
+    }
+  }
+  
+  //console.log(topush)
+}
 var clonedThisYear;
 var ResOpt;
 var SFRatio;
@@ -279,7 +350,8 @@ var Region;
 var enter_Year;
 var order = ["學術產出", "師生比例", "國際學生", "國際教師"];
 
-
+var topush = {};
+var data;
 // Parse the Data
 function Year(EnterYear) {
   Promise.all([
@@ -288,7 +360,7 @@ function Year(EnterYear) {
   ]).then(function (initialize) {
 
     let dataGeo = initialize[0]; // Continent map
-    let data = initialize[1]; // QS data
+    data = initialize[1]; // QS data
     NowYear = EnterYear; // select year
     ThisYear = [];
     ResOpt = new Map();
@@ -296,30 +368,8 @@ function Year(EnterYear) {
     IntStu = new Map();
     FC = new Map();
     enter_Year = EnterYear;
-
-    // Seperate data with year
-    data.forEach(function (row) {
-      if (SetRegion == false) {
-        if (row.year == NowYear) {
-          topush = { University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu: row.IntStu_Nor * 100, FC: row.FC_Nor * 100 };
-          ThisYear.push(topush);
-          ResOpt.set(row.university, row.research_output);
-          SFRatio.set(row.university, row.student_faculty_ratio);
-          IntStu.set(row.university, row.international_students);
-          FC.set(row.university, row.faculty_count);
-        }
-      }
-      else if (SetRegion == true) {
-        if (row.year == NowYear && row.region == Region) {
-          topush = { University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu: row.IntStu_Nor * 100, FC: row.FC_Nor * 100 };
-          ThisYear.push(topush);
-          ResOpt.set(row.university, row.research_output);
-          SFRatio.set(row.university, row.student_faculty_ratio);
-          IntStu.set(row.university, row.international_students);
-          FC.set(row.university, row.faculty_count);
-        }
-      }
-    });
+    
+    orderData();
     //console.log(data)
     //console.log(ThisYear);
     resetWeight();
@@ -363,7 +413,9 @@ function changeOrder(number) {
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
   // console.log(order);
-
+  orderData();
+  clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
+  draw(clonedThisYear);
 }
 /*
 function resetOrder() {
