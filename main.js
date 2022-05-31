@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 20, left: 50 };
-const width = 12700 - margin.left - margin.right;
+const width = 20020 - margin.left - margin.right;
 const height = 415 - margin.top - margin.bottom;
 
 const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"];
@@ -28,9 +28,6 @@ const Y_axis = svg.append("g");
 // Add data into a container
 const container = svg.append("g");
 
-// Add rank text 
-// const rankText = svg.selectAll("text.rect");
-
 // Create tooltip
 const tooltip = d3.select("#myStackBar")
   .append("div")
@@ -45,17 +42,6 @@ const tooltip = d3.select("#myStackBar")
   .style("color", "#FBFCFC")
   .style("background-color", "#212F3C")
   .style("font-family", "Microsoft JhengHei");
-
-function RSOutput(score) {
-  if (score == 100)
-    return ("Very High");
-  else if (score == 75)
-    return ("High");
-  else if (score == 50)
-    return ("Medium");
-  else
-    return ("Low");
-}
 
 // when the input range changes update the weight 
 d3.select("#nWeight_ResearchO").on("input", function () {
@@ -111,7 +97,7 @@ function draw(clonedThisYear) {
   //console.log(subgroups);
 
   // Value of the first column called group
-  const groups = clonedThisYear.map(d => d.University)
+  const groups = clonedThisYear.map(d => d.University);
   // const groups = clonedThisYear.map(d => {
   //   let regex = /\(.*\)/;
   //   let ans = regex.exec(d.University);
@@ -121,19 +107,20 @@ function draw(clonedThisYear) {
   //   }
   //   else 
   //     return d.University;
-  // })
+  // });
   
   let x = d3.scaleBand()
-    .range([0, clonedThisYear.length * 25])
+    .range([0, clonedThisYear.length * 40])
     .padding([0.2]);
   x.domain(groups);
   X_axis.attr("transform", `translate(0, ${height - 50})`)
     .call(d3.axisBottom(x).tickSizeOuter(0))
     .selectAll("text")
     .style("text-anchor", "end")
+    .style("font-family", "Georgia")
     .attr("dx", "-.8em")
     .attr("dy", ".10em")
-    .attr("transform", "rotate(-78)");
+    .attr("transform", "rotate(-70)");
 
   y.domain([0, 100 * (Research_weight + SFRatio_weight + InterStu_weight + FC_weight)]);
   Y_axis.call(d3.axisLeft(y));
@@ -162,7 +149,7 @@ function draw(clonedThisYear) {
     // Enter in the stack data = loop key per key = group per group
     .data(stackedData)
     .join("g")
-    .attr("fill", function(d, i){
+    .attr("fill", function (d, i) {
       val = (d[i][1] - d[i][0]).toFixed(2); //round up @5 round down @4
       // console.log((d[i][1]-d[i][0]).toFixed(2));
       // console.log((d[i].data.SFRatio).toFixed(2));
@@ -225,10 +212,10 @@ function draw(clonedThisYear) {
       tooltip
         .style("left", event.pageX + 50 + "px")
         .style("top", event.pageY - 180 + "px")
-        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>學術產出：" + RSOutput(ResOpt.get(d.toElement.__data__.data.University)) + "<br>師生比例：1:" + SFRatio.get(d.toElement.__data__.data.University) + "<br>國際學生：" + IntStu.get(d.toElement.__data__.data.University) + " 人<br>國際教師：" + FC.get(d.toElement.__data__.data.University) + " 人");
+        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人");
       // console.log(d);
     })
-    .on("mouseleave", function (d) { // When user do not hover anymore
+    .on("mouseleave", function (d) { 
       d3.selectAll("rect")
         .style("opacity", 1)
       tooltip
@@ -240,11 +227,12 @@ function draw(clonedThisYear) {
       tooltip.style("opacity", 0);
     });
 
-  // Show rank on top of stacked bar chart
-  const rankText = svg.selectAll("text.rect").data(clonedThisYear);
-  // console.log(clonedThisYear);
+  // Remove text before
+  svg.selectAll("text.rect").remove();
 
-  rankText
+  // Show rank on top of stacked bar chart
+  svg.selectAll("text.rect")
+    .data(clonedThisYear)
     .enter()
     .insert("text")
     .attr("class", "rect")
@@ -255,62 +243,24 @@ function draw(clonedThisYear) {
     })
     .attr("y", function (d) { 
       // console.log(d); 
-      // return y(d.SFRatio + d.ResearchOutput + d.InterStu + d.FC) - 5; 
-      return y(50);
+      return y(d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) - 5; 
+      // return y(50);
     })
     .style("fill", "rgb(0, 0, 0)")
     .style("font-family", "Georgia")
     .style("font-size","10px")
-    .text(function(d, i){ 
+    .text(function (d, i) { 
       // console.log(i);
-      return (i + 1);
+      if(i == "0")
+        return "1st";
+      else if(i == "1")
+        return "2nd";
+      else if(i == "2")
+        return "3rd";
+      else
+        return (i + 1) + "th";
     });
 
-  rankText.exit().remove();
-}
-
-// Filter region we want
-function FilterRegion(EnterRegion) {
-  // console.log(EnterRegion);
-  // console.log(typeof(EnterRegion));
-  if(EnterRegion == "All") {  
-    SetRegion = false;
-    Year(enter_Year);
-  }
-  else {
-    SetRegion = true;
-    Region = EnterRegion;
-    Year(enter_Year);
-  }
-}
-
-// reorder whole data
-function orderData(){
-  // reset 'ThisYear'
-  ThisYear = [];
-  // Seperate data with year
-  data.forEach(function (row) { 
-    orderObj(row);
-    if (SetRegion == false) {
-      if (row.year == NowYear) {
-        ThisYear.push(topush);
-        ResOpt.set(row.university, row.research_output);
-        SFRatio.set(row.university, row.student_faculty_ratio);
-        IntStu.set(row.university, row.international_students);
-        FC.set(row.university, row.faculty_count);
-      }
-    }else if (SetRegion == true) {
-      if (row.year == NowYear && row.region == Region) {
-        //topush = { University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu: row.IntStu_Nor * 100, FC: row.FC_Nor * 100 };
-        ThisYear.push(topush);
-        ResOpt.set(row.university, row.research_output);
-        SFRatio.set(row.university, row.student_faculty_ratio);
-        IntStu.set(row.university, row.international_students);
-        FC.set(row.university, row.faculty_count);
-      }
-    }
-  });
-  //console.log(ThisYear);
 }
 
 // order 'topush' obj
@@ -336,24 +286,43 @@ function orderObj(row){
   //console.log(topush)
 }
 
-var clonedThisYear;
-var ResOpt;
-var SFRatio;
-var IntStu;
-var FC;
-var subgroups;
+// reorder whole data
+function orderData(){
+  // reset 'ThisYear'
+  ThisYear = [];
+
+  // Seperate data with year
+  data.forEach(function (row) { 
+    orderObj(row);
+    if (SetRegion == false) {
+      if (row.year == NowYear) {
+        ThisYear.push(topush);
+        tooltipMap.set(row.university, {ResOpt: row.research_output, SFRatio: row.student_faculty_ratio, IntStu: row.international_students, FCount: row.faculty_count, Country: row.country});
+      }
+    }else if (SetRegion == true) {
+      if (row.year == NowYear && row.region == Region) {
+        //topush = { University: row.university, ResearchOutput: row.research_output, SFRatio: row.SFRatio_Nor * 100, InterStu: row.IntStu_Nor * 100, FC: row.FC_Nor * 100 };
+        ThisYear.push(topush);
+        tooltipMap.set(row.university, {ResOpt: row.research_output, SFRatio: row.student_faculty_ratio, IntStu: row.international_students, FCount: row.faculty_count, Country: row.country});
+      }
+    }
+  });
+  //console.log(ThisYear);
+}
+
+var data;
+var NowYear;
 var ThisYear;
+var clonedThisYear;
 var Research_weight;
 var SFRatio_weight;
 var InterStu_weight;
 var FC_weight;
-var NowYear;
 var SetRegion = false;
 var Region;
-var enter_Year;
 var order = ["學術產出", "師生比例", "國際學生", "國際教師"];
 var topush = {};
-var data;
+var tooltipMap;
 
 // Parse the Data
 function Year(EnterYear) {
@@ -366,11 +335,7 @@ function Year(EnterYear) {
     data = initialize[1]; // QS data
     NowYear = EnterYear; // select year
     ThisYear = [];
-    ResOpt = new Map();
-    SFRatio = new Map();
-    IntStu = new Map();
-    FC = new Map();
-    enter_Year = EnterYear;
+    tooltipMap = new Map();
     
     orderData();
     //console.log(data)
@@ -421,6 +386,33 @@ function changeOrder(number) {
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
   draw(clonedThisYear);
 
+}
+
+// Set research output level in tooltip 
+function RSOutput(score) {
+  if (score == 100)
+    return ("Very High");
+  else if (score == 75)
+    return ("High");
+  else if (score == 50)
+    return ("Medium");
+  else
+    return ("Low");
+}
+
+// Filter region we want
+function FilterRegion(EnterRegion) {
+  // console.log(EnterRegion);
+  // console.log(typeof(EnterRegion));
+  if(EnterRegion == "All") {  
+    SetRegion = false;
+    Year(NowYear);
+  }
+  else {
+    SetRegion = true;
+    Region = EnterRegion;
+    Year(NowYear);
+  }
 }
 
 function resetWeight() {
