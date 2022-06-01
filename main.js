@@ -9,7 +9,7 @@ const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"];
 const svg = d3.select("#myStackBar")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
-  .attr("height", height * 1.5 + margin.top + margin.bottom)
+  .attr("height", height * 1.42 + margin.top + margin.bottom)
   .append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
@@ -22,7 +22,7 @@ const X_axis = svg.append("g");
 
 // Add Y axis
 const y = d3.scaleLinear()
-  .range([height - 50, 0]);
+  .range([height, 0]);
 const Y_axis = svg.append("g");
 
 // Add data into a container
@@ -97,7 +97,19 @@ function draw(clonedThisYear) {
   //console.log(subgroups);
 
   // Value of the first column called group
-  const groups = clonedThisYear.map(d => d.University);
+  //const groups = clonedThisYear.map(d => d.University);
+  const groups = clonedThisYear.map(d => {
+    if(d.University === 'Universitat de Barcelona' || d.University === "Universitat Autònoma de Barcelona" || d.University === "Universidade de São Paulo" || d.University === "Universidade Federal de São Paulo"){
+      return d.University
+    }
+    else if(d.University.length > 20){
+      //return d.University.split(' ')[0]+d.University.split(' ')[1]+'...'+d.University.slice(d.University.length-15, d.University.length)
+      splited = d.University.split(/[\s-]+/)
+      len = splited.length
+      return (splited[0]+'...'+splited[len-2]+' '+splited[len-1])
+    }
+    else return d.University
+  });
   // const groups = clonedThisYear.map(d => {
   //   let regex = /\(.*\)/;
   //   let ans = regex.exec(d.University);
@@ -113,7 +125,7 @@ function draw(clonedThisYear) {
     .range([0, clonedThisYear.length * 40])
     .padding([0.2]);
   x.domain(groups);
-  X_axis.attr("transform", `translate(0, ${height - 50})`)
+  X_axis.attr("transform", `translate(0, ${height})`)
     .call(d3.axisBottom(x).tickSizeOuter(0))
     .selectAll("text")
     .style("text-anchor", "end")
@@ -188,7 +200,19 @@ function draw(clonedThisYear) {
     //   else 
     //     return x(d.data.University);
     // })
-    .attr("x", d => x(d.data.University))
+    //.attr("x", d => x(d.data.University))
+    .attr("x", function (d) {
+      if(d.data.University === 'Universitat de Barcelona' || d.data.University === "Universitat Autònoma de Barcelona" || d.data.University === "Universidade de São Paulo" || d.data.University === "Universidade Federal de São Paulo"){
+        return x(d.data.University)
+      }
+      else if(d.data.University.length > 20){
+        //return d.University.split(' ')[0]+d.University.split(' ')[1]+'...'+d.University.slice(d.University.length-15, d.University.length)
+        splited = d.data.University.split(/[\s-]+/)
+        len = splited.length
+        return x(splited[0]+'...'+splited[len-2]+' '+splited[len-1])
+      }
+      else return x(d.data.University)
+    })
     .attr("y", d => y(d[1]) - 0.8)
     .attr("class", d => d.data.University.replace(/[^a-zA-Z]/g, '-'))
     .attr("height", d => y(d[0]) - y(d[1]))
@@ -238,8 +262,20 @@ function draw(clonedThisYear) {
     .attr("class", "rect")
     .attr("text-anchor", "middle")
     .attr("x", function (d) { 
+      if(d.University === 'Universitat de Barcelona' || d.University === "Universitat Autònoma de Barcelona" || d.University === "Universidade de São Paulo" || d.University === "Universidade Federal de São Paulo"){
+        str = d.University
+      }
+      else if(d.University.length > 20){
+        //return d.University.split(' ')[0]+d.University.split(' ')[1]+'...'+d.University.slice(d.University.length-15, d.University.length)
+        splited = d.University.split(/[\s-]+/)
+        len = splited.length
+        str = splited[0]+'...'+splited[len-2]+' '+splited[len-1] 
+      }
+      else {
+        str =  d.University
+      }
       // console.log(d);
-      return x(d.University) + x.bandwidth() / 2; 
+      return x(str) + x.bandwidth() / 2; 
     })
     .attr("y", function (d) { 
       // console.log(d); 
