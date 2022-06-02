@@ -3,16 +3,49 @@
 
 <head>
   <link rel="stylesheet" href="css.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-  <br><div style="text-align:center;"><font face="微軟正黑體" color = black> 
-      <h1><b>世界大學排名</b></h1><br>
-  </div></font>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  <br>
+  <div style="text-align:center;">
+    <font face="微軟正黑體" color=black>
+      <h1><b>世界大學排名　</b>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          說明
+        </button>
+      </h1>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">說明頁面ㄉ標題</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              這裡放說明
+            </div>
+            <div class="modal-footer">
+              <span class="badge rounded-pill bg-info">組員</span><br>
+              107703005 林庭安<br>
+              107703009 吳宇珊<br>
+              107703010 賴宥辰<br>
+              107703018 龔琳甯<br>
+              107703054 連英茹<br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+  </div>
+  </font>
 </head>
 
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v6.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
 <body>
   <div class="row">
@@ -25,7 +58,7 @@
       </div>
     </div>
     <div class="col" style="width:550px; ">
-      <div class="card" >
+      <div class="card">
         <div class="card-body">
 
           <h5 class="card-title"><img src="calendar.svg" class="img-fluid" style="width:20px;"><b> 年份選擇 </b></h5>
@@ -59,7 +92,8 @@
           <hr>
           <h5 class="card-title">
             <img src="world.svg" class="img-fluid" style="width: 20px;"><b> 地區選擇 </b>
-            <button type="button" class="btn btn-outline-secondary  rounded-pill btn-sm" onclick="FilterRegion(`All`)">選擇全部</button>
+            <button type="button" class="btn btn-outline-secondary  rounded-pill btn-sm"
+              onclick="FilterRegion(`All`)">選擇全部</button>
           </h5>
           <div id="myMap"></div>
           <hr>
@@ -67,7 +101,8 @@
             <div class="col">
               <h5 class="card-title">
                 <img src="system-controller-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 權重調整 </b>
-                <button type="button" class="btn btn-outline-secondary rounded-pill btn-sm" onclick="resetWeight();">重置</button>
+                <button type="button" class="btn btn-outline-secondary rounded-pill btn-sm"
+                  onclick="resetWeight();">重置</button>
               </h5>
               <div class="d-grid gap-2">
                 <label for="nWeight_FC" style="display: inline-block; width: 240px; text-align: center">
@@ -95,7 +130,8 @@
             <div class="col">
               <h5 class="card-title">
                 <img src="exchange-svgrepo-com.svg" class="img-fluid" style="width: 20px;"><b> 順序調整 </b>
-                <button type="button" class="btn btn-outline-secondary rounded-pill btn-sm" onclick="changeOrder(0);">重置</button>
+                <button type="button" class="btn btn-outline-secondary rounded-pill btn-sm"
+                  onclick="changeOrder(0);">重置</button>
               </h5>
 
               <div class="row">
