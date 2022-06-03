@@ -13,6 +13,11 @@ const svg = d3.select("#myStackBar")
   .append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+const states_svg = d3.select("#NowStates")
+    .append("svg")
+    .attr("width", 1000)
+    .attr("height", 50)
+    .attr("transform", "translate(50, 40)");
 
 // Add X axis
 // const x = d3.scaleBand()
@@ -218,7 +223,10 @@ function draw(clonedThisYear) {
         .style("opacity", 0);
     })
     .on("mouseout", function (d) {
-      tooltip.style("opacity", 0);
+      tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 0);
     });
 
   // Remove text before
@@ -276,6 +284,21 @@ function draw(clonedThisYear) {
       return Math.round((d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) * 1) / 1; 
     });
 
+  // Show states now on top on stacked bar chart 
+  states_svg.selectAll("text").remove();
+  states_svg.append('text')
+    .attr('x', 5)
+    .attr('y', 10)
+    .attr('dy', 10)
+    .style('font-size', '20px')
+    .text(function () {
+      if(SetRegion == false){
+        return NowYear + "年 " + "全部國家";
+      }
+      else {
+        return NowYear + "年 " + Region;
+      }
+    });  
 }
 
 // order 'topush' obj
