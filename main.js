@@ -234,8 +234,8 @@ function draw(clonedThisYear) {
         .duration(200)
         .style("opacity", 1);
       tooltip
-        .style("left", event.pageX + 50 + "px")
-        .style("top", event.pageY - 180 + "px")
+        .style("left", event.pageX - 550 + "px")
+        .style("top", event.pageY - 280 + "px")
         .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人");
       // console.log(d);
     })
