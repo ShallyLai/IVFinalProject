@@ -103,23 +103,12 @@ function draw(clonedThisYear) {
       return d.University
     }
     else if(d.University.length > 20){
-      //return d.University.split(' ')[0]+d.University.split(' ')[1]+'...'+d.University.slice(d.University.length-15, d.University.length)
       splited = d.University.split(/[\s-]+/)
       len = splited.length
       return (splited[0]+'...'+splited[len-2]+' '+splited[len-1])
     }
     else return d.University
   });
-  // const groups = clonedThisYear.map(d => {
-  //   let regex = /\(.*\)/;
-  //   let ans = regex.exec(d.University);
-  //   if(ans !== null){
-  //     //console.log(ans[0].slice(1,ans[0].length-1));
-  //     return (ans[0].slice(1, ans[0].length - 1));
-  //   }
-  //   else 
-  //     return d.University;
-  // });
   
   let x = d3.scaleBand()
     .range([0, clonedThisYear.length * 40])
@@ -255,27 +244,17 @@ function draw(clonedThisYear) {
   svg.selectAll("text.rect").remove();
 
   // Show rank on top of stacked bar chart
-  svg.selectAll("text.rect")
-    .data(clonedThisYear)
+  const groups_org = clonedThisYear.map(d => d.University);
+  const x_org = x.domain(groups_org);
+  const text = svg.selectAll("text.rect").data(clonedThisYear)
+  
+  text  
     .enter()
     .insert("text")
     .attr("class", "rect")
     .attr("text-anchor", "middle")
     .attr("x", function (d) { 
-      if(d.University === 'Universitat de Barcelona' || d.University === "Universitat Autònoma de Barcelona" || d.University === "Universidade de São Paulo" || d.University === "Universidade Federal de São Paulo"){
-        str = d.University
-      }
-      else if(d.University.length > 20){
-        //return d.University.split(' ')[0]+d.University.split(' ')[1]+'...'+d.University.slice(d.University.length-15, d.University.length)
-        splited = d.University.split(/[\s-]+/)
-        len = splited.length
-        str = splited[0]+'...'+splited[len-2]+' '+splited[len-1] 
-      }
-      else {
-        str =  d.University
-      }
-      // console.log(d);
-      return x(str) + x.bandwidth() / 2; 
+      return x_org(d.University) + x_org.bandwidth() / 2; 
     })
     .attr("y", function (d) { 
       // console.log(d); 
@@ -295,6 +274,26 @@ function draw(clonedThisYear) {
         return "3rd";
       else
         return (i + 1) + "th";
+    });
+
+  text
+    .enter()
+    .append("text")
+    .attr("class", "rect")
+    .attr("text-anchor", "middle")
+    .attr("x", function (d) { 
+      return x_org(d.University) + x_org.bandwidth() / 2; 
+    })
+    .attr("y", function (d) { 
+      // console.log(d); 
+      return y(50);
+    })
+    .style("fill", "rgb(0, 0, 0)")
+    .style("font-family", "Georgia")
+    .style("font-size","9px")
+    .text(function (d, i) { 
+      // console.log(d);
+      return Math.round((d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) * 1) / 1; 
     });
 
 }
