@@ -100,14 +100,15 @@ function draw(clonedThisYear) {
   //const groups = clonedThisYear.map(d => d.University);
   const groups = clonedThisYear.map(d => {
     if(d.University === 'Universitat de Barcelona' || d.University === "Universitat Autònoma de Barcelona" || d.University === "Universidade de São Paulo" || d.University === "Universidade Federal de São Paulo"){
-      return d.University
+      return d.University;
     }
     else if(d.University.length > 20){
-      splited = d.University.split(/[\s-]+/)
-      len = splited.length
-      return (splited[0]+'...'+splited[len-2]+' '+splited[len-1])
+      splited = d.University.split(/[\s-] + /);
+      len = splited.length;
+      return (splited[0] + '...' + splited[len - 2] + ' ' + splited[len - 1]);
     }
-    else return d.University
+    else 
+      return d.University;
   });
   
   let x = d3.scaleBand()
@@ -125,13 +126,6 @@ function draw(clonedThisYear) {
 
   y.domain([0, 100 * (Research_weight + SFRatio_weight + InterStu_weight + FC_weight)]);
   Y_axis.call(d3.axisLeft(y));
-
-  // color palette shows one color per subgroup
-  // const color = d3.scaleOrdinal()
-  //  .domain(subgroups)
-  //  .range(d3.schemeSet2);
-  //const color = ["#023e8a", "#0096c7", "#48cae4", "#ade8f4"]
-
  
   //stack the data? --> stack per subgroup
   const stackedData = d3.stack()
@@ -177,30 +171,17 @@ function draw(clonedThisYear) {
     .join("rect")
     .transition()
     .duration(200)
-    // .attr("x", function (d) {
-    //   //console.log(d)
-    //   //console.log(d.data.University.replace(/\s/g, '-'))
-    //   let regex = /\(.*\)/;
-    //   let ans = regex.exec(d.data.University);
-    //   if(ans !== null){
-    //     //console.log(ans[0].slice(1,ans[0].length-1))
-    //     return x(ans[0].slice(1, ans[0].length - 1))
-    //   }
-    //   else 
-    //     return x(d.data.University);
-    // })
-    //.attr("x", d => x(d.data.University))
     .attr("x", function (d) {
       if(d.data.University === 'Universitat de Barcelona' || d.data.University === "Universitat Autònoma de Barcelona" || d.data.University === "Universidade de São Paulo" || d.data.University === "Universidade Federal de São Paulo"){
-        return x(d.data.University)
+        return x(d.data.University);
       }
       else if(d.data.University.length > 20){
-        //return d.University.split(' ')[0]+d.University.split(' ')[1]+'...'+d.University.slice(d.University.length-15, d.University.length)
-        splited = d.data.University.split(/[\s-]+/)
-        len = splited.length
-        return x(splited[0]+'...'+splited[len-2]+' '+splited[len-1])
+        splited = d.data.University.split(/[\s-] + /);
+        len = splited.length;
+        return x(splited[0] + '...' + splited[len - 2] + ' ' + splited[len - 1]);
       }
-      else return x(d.data.University)
+      else 
+        return x(d.data.University)
     })
     .attr("y", d => y(d[1]) - 0.8)
     .attr("class", d => d.data.University.replace(/[^a-zA-Z]/g, '-'))
@@ -211,11 +192,11 @@ function draw(clonedThisYear) {
   container
     .on("mouseover", function (d) {
       d3.selectAll("rect")
-        .style("opacity", 0.2)
+        .style("opacity", 0.2);
       d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-'))
         .style("opacity", 1)
         .transition()
-        .duration(200)
+        .duration(200);
       // console.log(d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-')).style("opacity"))
 
       tooltip
@@ -230,7 +211,7 @@ function draw(clonedThisYear) {
     })
     .on("mouseleave", function (d) { 
       d3.selectAll("rect")
-        .style("opacity", 1)
+        .style("opacity", 1);
       tooltip
         .transition()
         .duration(200)
@@ -259,7 +240,6 @@ function draw(clonedThisYear) {
     .attr("y", function (d) { 
       // console.log(d); 
       return y(d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) - 5; 
-      // return y(50);
     })
     .style("fill", "rgb(0, 0, 0)")
     .style("font-family", "Georgia")
@@ -291,7 +271,7 @@ function draw(clonedThisYear) {
     .style("fill", "rgb(0, 0, 0)")
     .style("font-family", "Georgia")
     .style("font-size","9px")
-    .text(function (d, i) { 
+    .text(function (d) { 
       // console.log(d);
       return Math.round((d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) * 1) / 1; 
     });
