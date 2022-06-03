@@ -103,7 +103,7 @@ function draw(clonedThisYear) {
       return d.University;
     }
     else if(d.University.length > 20){
-      splited = d.University.split(/[\s-] + /);
+      splited = d.University.split(/[\s-]+/);
       len = splited.length;
       return (splited[0] + '...' + splited[len - 2] + ' ' + splited[len - 1]);
     }
@@ -176,12 +176,12 @@ function draw(clonedThisYear) {
         return x(d.data.University);
       }
       else if(d.data.University.length > 20){
-        splited = d.data.University.split(/[\s-] + /);
+        splited = d.data.University.split(/[\s-]+/);
         len = splited.length;
         return x(splited[0] + '...' + splited[len - 2] + ' ' + splited[len - 1]);
       }
       else 
-        return x(d.data.University)
+        return x(d.data.University);
     })
     .attr("y", d => y(d[1]) - 0.8)
     .attr("class", d => d.data.University.replace(/[^a-zA-Z]/g, '-'))
@@ -227,7 +227,7 @@ function draw(clonedThisYear) {
   // Show rank on top of stacked bar chart
   const groups_org = clonedThisYear.map(d => d.University);
   const x_org = x.domain(groups_org);
-  const text = svg.selectAll("text.rect").data(clonedThisYear)
+  const text = svg.selectAll("text.rect").data(clonedThisYear);
   
   text  
     .enter()
