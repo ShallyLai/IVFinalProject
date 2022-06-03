@@ -53,8 +53,8 @@ Promise.all([
                 .duration(200)
                 .style("opacity", .8);
             map_tooltip
-                .style("left", (d.pageX-850) + 'px')
-                .style("top", (d.page-100) + 'px')
+                .style("left", (d.pageX) + 'px')
+                .style("top", (d.page - 100) + 'px')
                 .html(d.target.__data__.properties.region);
                 //console.log(d.pageX-850,d.pageY)
 
@@ -63,8 +63,8 @@ Promise.all([
         let mapMouseMove = function (d) {
           
             map_tooltip
-                .style("left", (d.pageX-850) + 'px')
-                .style("top", (d.pageY-100) + 'px')
+                .style("left", (d.pageX) + 'px')
+                .style("top", (d.pageY - 100) + 'px')
                 .html(d.target.__data__.properties.region);
                // console.log(d.pageX,d.pageY)
 
