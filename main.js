@@ -17,12 +17,9 @@ const states_svg = d3.select("#NowStates")
     .append("svg")
     .attr("width", 1000)
     .attr("height", 50)
-    .attr("transform", "translate(50, 40)");
+    .attr("transform", "translate(40, 40)");
 
 // Add X axis
-// const x = d3.scaleBand()
-//   .range([0, width])
-//   .padding([0.2]);
 const X_axis = svg.append("g");
 
 // Add Y axis
@@ -169,7 +166,7 @@ function draw(clonedThisYear) {
       }
       return colorPen;
     })
-    .attr("class", d => "myRect " + d.key) // Add a class to each subgroup: their name
+    .attr("class", d => "myRect " + d.key) // Add a class to each subgroup
     .selectAll("rect")
     // enter a second time = loop subgroup per subgroup to add all rectangles
     .data(d => d)
@@ -224,9 +221,9 @@ function draw(clonedThisYear) {
     })
     .on("mouseout", function (d) {
       tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 0);
+        .transition()
+        .duration(200)
+        .style("opacity", 0);
     });
 
   // Remove text before
@@ -245,9 +242,8 @@ function draw(clonedThisYear) {
     .attr("x", function (d) { 
       return x_org(d.University) + x_org.bandwidth() / 2; 
     })
-    .attr("y", function (d) { 
-      // console.log(d); 
-      return y(d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) - 5; 
+    .attr("y", function (d) {  
+      return y(50);
     })
     .style("fill", "rgb(0, 0, 0)")
     .style("font-family", "Georgia")
@@ -273,8 +269,7 @@ function draw(clonedThisYear) {
       return x_org(d.University) + x_org.bandwidth() / 2; 
     })
     .attr("y", function (d) { 
-      // console.log(d); 
-      return y(50);
+      return y(d.SFRatio + d.ResearchOutput + d.InterStu + d.FCount) - 5;
     })
     .style("fill", "rgb(0, 0, 0)")
     .style("font-family", "Georgia")
@@ -286,11 +281,12 @@ function draw(clonedThisYear) {
 
   // Show states now on top on stacked bar chart 
   states_svg.selectAll("text").remove();
-  states_svg.append('text')
-    .attr('x', 5)
-    .attr('y', 10)
-    .attr('dy', 10)
-    .style('font-size', '20px')
+  states_svg.append("text")
+    .attr("x", 5)
+    .attr("y", 10)
+    .attr("dy", 10)
+    .style("font-size", "20px")
+    .style("font-family", "Microsoft YaHei")
     .text(function () {
       if(SetRegion == false){
         return NowYear + "年 " + "全部國家";
