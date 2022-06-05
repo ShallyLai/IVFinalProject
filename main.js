@@ -56,7 +56,7 @@ d3.select("#nWeight_InterStuO").on("input", function () {
   update(+this.value, "InterStu", clonedThisYear);
 });
 d3.select("#nWeight_FC").on("input", function () {
-  update(+this.value, "FC", clonedThisYear);
+  update(+this.value, "FCount", clonedThisYear);
 });
 
 // Set weight dynamically
@@ -149,7 +149,7 @@ function draw(clonedThisYear) {
     .attr("fill", function (d, i) {
       val = (d[i][1] - d[i][0]).toFixed(2); //round up @5 round down @4
       // console.log((d[i][1]-d[i][0]).toFixed(2));
-      console.log(d[i])
+      // console.log(d[i])
     
       if(val == (d[i].data.ResearchOutput).toFixed(2) && colorRecord.indexOf(color[0]) == -1){
         colorPen = color[0];
@@ -160,9 +160,9 @@ function draw(clonedThisYear) {
       }else if(val == (d[i].data.FCount).toFixed(2) && colorRecord.indexOf(color[3]) == -1){
         colorPen = color[3];
       }else{
-        for(var i= 0; i<=3; i++){
-          if(colorRecord.indexOf(color[i])==-1){
-            colorPen =color[i];
+        for(var i = 0; i <= 3; i++){
+          if(colorRecord.indexOf(color[i]) == -1){
+            colorPen = color[i];
             break;
           }
         }
@@ -421,7 +421,7 @@ function changeOrder(number) {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  //console.log(order);
+  // console.log(order);
   
   orderData();
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
