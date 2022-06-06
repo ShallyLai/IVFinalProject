@@ -122,9 +122,9 @@ function draw(clonedThisYear) {
     .selectAll("text")
     .style("text-anchor", "end")
     .style("font-family", "Georgia")
-    .attr("dx", "-.8em")
-    .attr("dy", ".10em")
-    .attr("transform", "rotate(-70)");
+    .attr("dx", "-2em")
+    .attr("dy", ".6em")
+    .attr("transform", "rotate(-60)");
 
   y.domain([0, 100 * (Research_weight + SFRatio_weight + InterStu_weight + FC_weight)]);
   Y_axis.call(d3.axisLeft(y));
@@ -250,7 +250,7 @@ function draw(clonedThisYear) {
       return x_org(d.University) + x_org.bandwidth() / 2; 
     })
     .attr("y", function (d) {  
-      return y(50);
+      return y(-80);
     })
     .style("fill", "rgb(0, 0, 0)")
     .style("font-family", "Georgia")
