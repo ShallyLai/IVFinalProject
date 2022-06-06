@@ -11,6 +11,18 @@
  .col-1{
    padding: 0 !important;
  }
+ 
+ .col{
+    padding: 0 0 0 0;
+ }
+
+ #col-left{
+    margin-left: 30px;
+ }
+
+ #col-right{
+    margin-right: 30px;
+ }
 
  .btn.btn-outline-primary:disabled{
     color: #0d6efd;

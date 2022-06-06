@@ -1,7 +1,7 @@
 
 const legend_svg = d3.select("#myLegend")
     .append("svg")
-    .attr("width", 600)
+    .attr("width", 500)
     .attr("height", 50)
     .attr("transform", "translate(300,40)");
 

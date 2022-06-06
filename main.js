@@ -15,7 +15,7 @@ const svg = d3.select("#myStackBar")
 
 const states_svg = d3.select("#NowStates")
     .append("svg")
-    .attr("width", 1000)
+    .attr("width", 500)
     .attr("height", 50)
     .attr("transform", "translate(40, 40)");
 
