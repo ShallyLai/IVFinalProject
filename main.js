@@ -296,7 +296,7 @@ function draw(clonedThisYear) {
     .style("font-family", "Microsoft YaHei")
     .text(function () {
       if(SetRegion == false){
-        return NowYear + "年 " + "全部國家";
+        return NowYear + "年 " + "全部地區";
       }
       else {
         return NowYear + "年 " + Region;
