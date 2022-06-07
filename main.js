@@ -3,7 +3,7 @@ const margin = { top: 10, right: 30, bottom: 20, left: 50 };
 const width = 20020 - margin.left - margin.right;
 const height = 415 - margin.top - margin.bottom;
 
-const color = ["#FF7E67", "#F9D923", "#00c5c8", "#5c7aff"];
+var color = [];
 
 // append the svg object to the body of the page
 const svg = d3.select("#myStackBar")
@@ -136,10 +136,19 @@ function draw(clonedThisYear) {
   // console.log(ThisYear);
   // console.log(stackedData);
 
-  // Show the bars, highlight a specific subgroup when hovered        
-  var colorPen = color[0]; 
-  var colorRecord = []; 
-  var val = 0;    
+  // Show the bars, highlight a specific subgroup when hovered   
+  color = [];
+  for(var i = 0; i<order.length; i++){ 
+    if(order[i] == '學術產出'){
+      color.push('#FF7E67')
+    }else if(order[i] == '師生比例'){
+      color.push('#F9D923')
+    }else if(order[i] == '國際學生'){
+      color.push("#00c5c8")
+    }else if(order[i] == '國際教師'){
+      color.push("#5c7aff")
+    }
+  }
   
   container
     .selectAll("g")
@@ -147,31 +156,7 @@ function draw(clonedThisYear) {
     .data(stackedData)
     .join("g")
     .attr("fill", function (d, i) {
-      val = (d[i][1] - d[i][0]).toFixed(2); //round up @5 round down @4
-      // console.log((d[i][1]-d[i][0]).toFixed(2));
-      // console.log(d[i])
-    
-      if(val == (d[i].data.ResearchOutput).toFixed(2) && colorRecord.indexOf(color[0]) == -1){
-        colorPen = color[0];
-      }else if(val == (d[i].data.SFRatio).toFixed(2) && colorRecord.indexOf(color[1]) == -1){
-        colorPen = color[1];
-      }else if(val == (d[i].data.InterStu).toFixed(2) && colorRecord.indexOf(color[2]) == -1){
-        colorPen = color[2];
-      }else if(val == (d[i].data.FCount).toFixed(2) && colorRecord.indexOf(color[3]) == -1){
-        colorPen = color[3];
-      }else{
-        for(var i = 0; i <= 3; i++){
-          if(colorRecord.indexOf(color[i]) == -1){
-            colorPen = color[i];
-            break;
-          }
-        }
-      }
-      colorRecord[colorRecord.length] = colorPen;
-      if(colorRecord.length == 4){
-        colorRecord = [];
-      }
-      return colorPen;
+      return color[i];
     })
     .attr("class", d => "myRect " + d.key) // Add a class to each subgroup
     .selectAll("rect")
@@ -421,7 +406,7 @@ function changeOrder(number) {
   d3.select("#order1").text("　" + order[1] + "　");
   d3.select("#order2").text("　" + order[2] + "　");
   d3.select("#order3").text("　" + order[3] + "　");
-  // console.log(order);
+  console.log(order);
   
   orderData();
   clonedThisYear = JSON.parse(JSON.stringify(ThisYear));
