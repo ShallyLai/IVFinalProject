@@ -3,7 +3,7 @@ const margin = { top: 10, right: 30, bottom: 20, left: 50 };
 const width = 20020 - margin.left - margin.right;
 const height = 415 - margin.top - margin.bottom;
 
-var color = [];
+var color = [ '#FF7E67','#F9D923', "#00c5c8", "#5c7aff"];
 
 // append the svg object to the body of the page
 const svg = d3.select("#myStackBar")
@@ -135,7 +135,7 @@ function draw(clonedThisYear) {
     (clonedThisYear);
   // console.log(ThisYear);
   // console.log(stackedData);
-
+ 
   // Show the bars, highlight a specific subgroup when hovered   
   color = [];
   for(var i = 0; i<order.length; i++){ 
