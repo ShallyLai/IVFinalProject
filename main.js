@@ -1,7 +1,6 @@
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 20, left: 50 };
 const width = 20020 - margin.left - margin.right;
-//const width = clonedThisYear.length * 40;
 const height = 415 - margin.top - margin.bottom;
 
 var color = ['#FF7E67', '#F9D923', "#00c5c8", "#5c7aff"];
@@ -88,11 +87,10 @@ function draw(clonedThisYear, redraw) {
 
   if (redraw === true) {
 
-    d3.select("#myStackBar svg").remove()
+    d3.select("#myStackBar svg").remove();
 
     // set the dimensions and margins of the graph
     const margin = { top: 10, right: 30, bottom: 20, left: 50 };
-    //const width = 20020 - margin.left - margin.right;
     const width = Math.max(clonedThisYear.length * 40, 700);
     const height = 415 - margin.top - margin.bottom;
 
@@ -162,7 +160,6 @@ function draw(clonedThisYear, redraw) {
   //console.log(subgroups);
 
   // Value of the first column called group
-  //const groups = clonedThisYear.map(d => d.University);
   const groups = clonedThisYear.map(d => {
     if (d.University === 'Universitat de Barcelona' || d.University === "Universitat Autònoma de Barcelona" || d.University === "Universidade de São Paulo" || d.University === "Universidade Federal de São Paulo") {
       return d.University;
@@ -248,32 +245,30 @@ function draw(clonedThisYear, redraw) {
 
   container
     .on("mouseover", function (d) {
-      var score = d.toElement.__data__.data.SFRatio + d.toElement.__data__.data.ResearchOutput + d.toElement.__data__.data.InterStu + d.toElement.__data__.data.FCount;
-      // console.log(score);
       d3.selectAll("rect")
         .style("opacity", 0.2);
       d3.selectAll("." + d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-'))
         .style("opacity", 1)
         .transition()
         .duration(200);
-      // console.log(d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-')).style("opacity"))
-
+    })
+    .on("mousemove", function(d) {
+      var score = Math.round(d.toElement.__data__.data.SFRatio + d.toElement.__data__.data.ResearchOutput + d.toElement.__data__.data.InterStu + d.toElement.__data__.data.FCount * 100) / 100;
       tooltip
         .transition()
-        .duration(200)
+        .duration(100)
         .style("opacity", 1);
       tooltip
-        .style("left", event.pageX - 550 + "px")
-        .style("top", event.pageY - 280 + "px")
-        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人<br>加權總分：" + Math.round(score * 100) / 100);
-      // console.log(d);
+        .style("left", d.pageX - 550 + "px")
+        .style("top", d.pageY - 300 + "px")
+        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人<br>加權總分：" + score);
     })
     .on("mouseleave", function (d) {
       d3.selectAll("rect")
         .style("opacity", 1);
       tooltip
-        // .transition()
-        // .duration(200)
+        .transition()
+        .duration(200)
         .style("opacity", 0);
     })
     .on("mouseout", function (d) {
