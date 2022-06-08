@@ -185,6 +185,8 @@ function draw(clonedThisYear) {
   
   container
     .on("mouseover", function (d) {
+      var score = d.toElement.__data__.data.SFRatio + d.toElement.__data__.data.ResearchOutput + d.toElement.__data__.data.InterStu + d.toElement.__data__.data.FCount;
+      // console.log(score);
       d3.selectAll("rect")
         .style("opacity", 0.2);
       d3.selectAll("."+d.toElement.__data__.data.University.replace(/[^a-zA-Z]/g, '-'))
@@ -200,15 +202,15 @@ function draw(clonedThisYear) {
       tooltip
         .style("left", event.pageX - 550 + "px")
         .style("top", event.pageY - 280 + "px")
-        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人");
+        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人<br>加權總分：" + score);
       // console.log(d);
     })
     .on("mouseleave", function (d) { 
       d3.selectAll("rect")
         .style("opacity", 1);
       tooltip
-        .transition()
-        .duration(200)
+        // .transition()
+        // .duration(200)
         .style("opacity", 0);
     })
     .on("mouseout", function (d) {
