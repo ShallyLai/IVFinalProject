@@ -202,7 +202,7 @@ function draw(clonedThisYear) {
       tooltip
         .style("left", event.pageX - 550 + "px")
         .style("top", event.pageY - 280 + "px")
-        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人<br>加權總分：" + score);
+        .html("西元 " + NowYear + " 年<br>" + d.toElement.__data__.data.University + "<br>國家：" + tooltipMap.get(d.toElement.__data__.data.University).Country + "<br>學術產出：" + RSOutput(tooltipMap.get(d.toElement.__data__.data.University).ResOpt) + "<br>師生比例：1:" + tooltipMap.get(d.toElement.__data__.data.University).SFRatio + "<br>國際學生：" + tooltipMap.get(d.toElement.__data__.data.University).IntStu + " 人<br>國際教師：" + tooltipMap.get(d.toElement.__data__.data.University).FCount + " 人<br>加權總分：" + Math.round(score * 100) / 100);
       // console.log(d);
     })
     .on("mouseleave", function (d) { 
